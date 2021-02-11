@@ -1,0 +1,162 @@
+.pbba-container {
+	position: fixed;
+	z-index: 1;
+	padding-top: 2%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.pbba-content {
+	margin: auto;
+	padding: 1%;
+	border: 1px solid #888;
+	/* max-width: 1024px; */
+	width: 1024px;
+	max-height: 550px;
+	height: 550px;
+	font-family: "Mark Office for MC" !important;
+	margin-top: 3%;
+}
+
+.pbba-content-background {
+	background: url('../images/brn-popup/powered_by_mc-1.svg');
+	background-size: 210px 26px;
+	background-repeat: no-repeat;
+	background-position: 98% 98%;
+	background-color: #fefefe;
+}
+
+.more-about-background {
+	background: url('../images/more-about/more-about-artwork.png'),
+		url('../images/more-about/powered_by_mc-1.svg');
+	background-size: 45%, 210px 26px;
+	background-repeat: no-repeat;
+	background-position: 85% 60%, 98% 98%;
+	background-color: #fefefe;
+}
+
+.content-wrapper {
+	display: inline-block;
+	width: 96%;
+	height: 94%;
+	margin: 0% 2%;
+}
+
+/* LOW RESOLUTION DESKTOP */
+@media screen and (max-device-height: 768px) {
+	.pbba-container {
+		padding-top: 15px;
+	}
+	.pbba-content {
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		max-width: 830px;
+		max-height: 500px;
+		font-family: "Mark Office for MC" !important;
+		margin-top: 0%;
+	}
+}
+
+/* All Mobiles */
+@media only screen and (min-device-width: 360px) and (min-device-height:
+	568px) and (orientation: portrait) {
+	.pbba-container {
+		position: fixed;
+		z-index: 1;
+		padding-top: 0px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: rgba(0, 0, 0, 0.4);
+		display: flex;
+	}
+	.pbba-content {
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		width: 325px;
+		height: 530px;
+		max-width: 100%;
+		max-height: 100%;
+		text-align: center;
+		background-position: 55% 98%;
+	}
+	.more-about-background {
+		background: url('../images/more-about/powered_by_mc-1.svg');
+		background-size: 210px 26px;
+		background-repeat: no-repeat;
+		background-position: 55% 98%;
+		background-color: #fefefe;
+	}
+}
+
+/* iPhone 5 & 5S in portrait & landscape */
+@media only screen and (max-device-width : 320px) and (orientation :
+	portrait) {
+	.pbba-container {
+		position: fixed;
+		z-index: 1;
+		padding-top: 2px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: rgba(0, 0, 0, 0.4);
+		display: flex;
+	}
+	.pbba-content {
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		width: 270px;
+		height: 447px;
+		max-height: 100%;
+		text-align: center;
+		background-position: 55% 100%;
+		background-size: 140px 26px;
+	}
+	.more-about-background {
+		background: url(../images/more-about/powered_by_mc-1.svg);
+		background-size: 140px 26px;
+		background-repeat: no-repeat;
+		background-position: 55% 100%;
+		background-color: #fefefe;
+	}
+}
+
+/* iPad portrait */
+@media only screen and (min-device-height: 1024px) and
+	(min-device-width: 768px) and (orientation: portrait) {
+	.pbba-container {
+		position: fixed;
+		z-index: 1;
+		padding-top: 0px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: rgba(0, 0, 0, 0.4);
+		display: flex;
+	}
+	.pbba-content {
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		width: 550px;
+		height: 800px;
+		max-width: 100%;
+		max-height: 100%;
+		text-align: center;
+		background-position: 55% 98%;
+		background-size: 220px 30px;
+	}
+}

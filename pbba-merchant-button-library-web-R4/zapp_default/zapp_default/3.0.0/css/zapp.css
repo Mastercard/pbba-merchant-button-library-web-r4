@@ -1,0 +1,284 @@
+/*******************************************************************************
+ * Copyright 2016 IPCO 2012 Limited
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License "); you may not
+ * use this file except in compliance with the License . You may obtain a copy
+ * of the License at
+ * 
+ * http: // www.apache.org /licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS " BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied . See the
+ * License for the specific language governing permissions and limitations under
+ * the License .
+ ******************************************************************************/
+.more-about-iframe, .brn-iframe {
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	border: none;
+}
+
+.moreAboutDiv {
+	text-align: center;
+	font-size: 15px;
+	font-family: "Mark Office for MC" !important;
+	margin-top: 3px;
+}
+
+.moreAboutDivLeft {
+	text-align: left;
+	float: left;
+	font-size: 15px;
+	font-family: "Mark Office for MC" !important;
+	margin-top: 3px;
+}
+
+.moreAboutLink:hover {
+	cursor: pointer;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.moreAboutText {
+	margin-top: 0px;
+	font-family: 'Mark Office for Bold';
+}
+
+.zapp-button {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	height: 100%;
+}
+
+.zapp-buy-popup, #zapp-popup {
+	position: absolute;
+	z-index: 9999;
+	display: block;
+	top: 0px;
+	left: 0px;
+	border-color: #FF6E00;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+
+#zapp-popup .zapp-arrow {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 50px;
+	bottom: 0px !important;
+	text-indent: -9999px;
+	background-color: white;
+	border: 3px solid #FF6E00;
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";
+}
+
+#zapp-popup iframe {
+	height: 415px !important;
+	overflow: hidden;
+	background-color: white;
+	border: 3px solid #FF6E00;
+	left: -3px;
+	top: -3px;
+	width: 700px !important;
+	position: relative;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	display: block;
+	float: none;
+	margin: 0 auto;
+}
+
+#zapp-popup.dark iframe {
+	border-color: #FF6E00;
+	border-radius: 10px;
+	width: 330px !important;
+	height: 295px !important
+}
+
+#zapp-popup.dark .zapp-arrow {
+	border-color: #FF6E00;
+	background-color: white;
+	left: 88% !important;
+	border-radius: 5px;
+}
+
+#zapp-popup.mobile .zapp-arrow {
+	display: none;
+}
+
+th {
+	width: 120px;
+	font-weight: bold;
+}
+
+.zapp-popup-wrapper iframe {
+	left: 0 !important;
+	top: 0 !important;
+	bottom: 0 !important;
+	right: 0 !important;
+	margin: auto !important;
+	position: absolute !important;
+	padding: 0 !important;
+}
+
+.zapp-popup-wrapper {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	height: 100% !important;
+	width: 100%;
+	z-index: 100;
+	border-radius: 0 !important;
+	border: none !important;
+}
+
+.zapp-popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 7px;
+	z-index: 30;
+}
+
+.zapp-popup.zapp-popup-large {
+	width: 480px;
+	height: 240px;
+	margin: -120px -240px;
+}
+
+@media ( max-width : 480px) {
+	.zapp-popup-wrapper .zapp-popup {
+		width: 90%;
+		height: 240px !important;
+		margin: -120px 2%;
+		left: 0;
+		padding: 3%;
+	}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width
+	: 1024px) {
+	#zapp-popup iframe {
+		height: 500px !important;
+		background-color: transparent;
+		border: 0px;
+		border-radius: 0px !important;
+		margin: auto !important;
+		width: 80% !important;
+		left: -3px !important;
+		top: 0;
+		bottom: auto !important;
+		right: auto !important;
+		position: relative !important;
+		padding: 0 !important;
+	}
+	#zapp-popup.dark iframe {
+		border-color: #FF6E00;
+		border-radius: 10px;
+		width: 330px !important;
+		height: 295px !important
+	}
+	.moreAboutDiv {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.more-about-iframe {
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: hidden; /* Enable scroll if needed */
+		color: white;
+		border-width: 0px;
+	}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width
+	: 568px) {
+	#zapp-popup iframe {
+		height: 500px !important;
+		background-color: transparent;
+		border: 0px;
+		border-radius: 0px !important;
+		margin: auto !important;
+		width: 90% !important;
+		left: 4px !important;
+		top: auto !important;
+		bottom: auto !important;
+		right: auto !important;
+		position: relative !important;
+		padding: 0 !important;
+	}
+	.moreAboutDiv {
+		font-size: 11px;
+	}
+}
+
+@media ( min-device-width : 800px) and (max-device-width: 1280px) {
+	#zapp-popup iframe {
+		height: 500px !important;
+		background-color: transparent;
+		border: 0px;
+		border-radius: 0px !important;
+		margin: auto !important;
+		width: 80% !important;
+		left: -3px !important;
+		top: 0;
+		bottom: auto !important;
+		right: auto !important;
+		position: relative !important;
+		padding: 0 !important;
+	}
+	#zapp-popup.dark iframe {
+		border-color: #FF6E00;
+		border-radius: 10px;
+		width: 330px !important;
+		height: 295px !important
+	}
+}
+
+.cover {
+	background-color: #505050;
+	filter: alpha(opacity = 50); /* IE */
+	opacity: 0.5; /* Safari, Opera */
+	-moz-opacity: 0.50; /* FireFox */
+	z-index: 9998;
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+#zapp-popup {
+	width: 100% !important;
+	margin: 0 !important;
+	padding-top: 5%
+}
+
+#zapp-popup .content {
+	width: 90%;
+	margin: 0 auto
+}

@@ -1,0 +1,1476 @@
+/*******************************************************************************
+ * Copyright 2016 IPCO 2012 Limited
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License "); you may not
+ * use this file except in compliance with the License . You may obtain a copy
+ * of the License at
+ * 
+ * http: // www.apache.org /licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS " BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied . See the
+ * License for the specific language governing permissions and limitations under
+ * the License .
+ ******************************************************************************/
+[class*="mobile"] {
+	display: none;
+}
+
+[class*="desktop"] {
+	display: block;
+}
+
+[class*="Smdesktop"] {
+	display: none;
+}
+
+.more-about-iframe {
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	border: none;
+}
+
+.cfiLogosWrapper {
+	font-family: Mark Office for MC !important;
+}
+
+.brn-content-banks {
+	width: 100%;
+	display: none;
+}
+
+.custom-row {
+	max-width: 92%;
+	clear: both;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#list-of-banks {
+	clear: both;
+	margin: 20px 0;
+}
+
+#list-of-banks p {
+	font-size: 1.3em;
+	margin: 1% 0;
+}
+
+.wrkBank {
+	font-size: 1em;
+}
+
+.step1Wrapper, .step2Wrapper, .step3Wrapper, .step1WrapperMobile,
+	.step2WrapperMobile, .step3WrapperMobile {
+	float: left;
+}
+
+.step1 {
+	background-image: url('../images/brn-popup/phone_bank_step1_svg.png');
+	background-position-x: 5%;
+}
+
+.step1Mobile {
+	background-image:
+		url('../images/notification-popup/artwork_step_2_phone_menu_svg.png');
+	background-position-x: 8%;
+	background-size: 68.2%;
+}
+
+.step2 {
+	background-image: url('../images/brn-popup/phone_menu_step2_svg.png');
+	background-position-x: 5%;
+}
+
+.step2Mobile {
+	background-image:
+		url('../images/notification-popup/artwork_step_1_phone_banks_svg.png');
+	background-position-x: 11%;
+	background-size: 52.4%;
+}
+
+.step1, .step2, .step1Mobile, .step2Mobile {
+	width: 280px;
+	height: 290px;
+	float: left;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position-y: top;
+	font-size: 0px;
+}
+
+.step3 {
+	background-image: url('../images/brn-popup/phone_bank_step3_bg_svg.png');
+	width: 335px;
+	height: 290px;
+	float: left;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position-y: top;
+	background-position-x: 20%;
+	background-size: contain;
+}
+
+.step3-content {
+	position: absolute;
+	height: 290px;
+	width: 335px;
+	font-size: 0px;
+}
+
+.step3Mobile {
+	background-image:
+		url(../images/notification-popup/artwork_step_3_code_svg.png);
+	width: 313px;
+	height: 255px;
+	float: left;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position-y: top;
+	background-position-x: 20%;
+	background-size: contain;
+	margin-top: 2%;
+}
+
+.step1TextDesktop, .step2TextDesktop, .step3TextDesktop {
+	width: 180px;
+	text-align: center;
+}
+
+.step1TextDesktop span, .step2TextDesktop span, .step3TextDesktop span {
+	color: rgba(255, 110, 0, 1);
+	font-weight: bold;
+}
+
+.step3TextDesktop {
+	margin-left: 28%;
+}
+
+.custom-col-step3 {
+	width: 300px;
+	height: 300px;
+	float: left;
+	background-image: url('../images/brn-popup/phone_bank_step3_bg_svg.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+.custom-col-step3>div:first-child {
+	width: 95%;
+}
+
+.custom-col-lg-6, .custom-col-md-6 {
+	width: 50%;
+	float: left;
+}
+
+.new-mc-logo {
+	float: right;
+	width: 210px;
+	height: 26px;
+}
+
+.step3-block {
+	background: url('../images/brn-popup/phone_bank_step3_bg_svg.png')
+		no-repeat;
+}
+
+#brnCodeBlock {
+	margin-top: 35%;
+	margin-left: 9%;
+	text-align: center;
+}
+
+.refresh-in {
+	display: block;
+	text-align: center;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.seconds {
+	font-size: 16px;
+	margin-left: 4px;
+}
+
+.step3-caption {
+	text-align: center;
+	margin-left: 50px;
+	width: 250px;
+}
+
+.brnErrorHeading {
+	font-size: 19px;
+	font-family: "Mark Office for Medium" !important;
+}
+
+.brnErrorHeading2 {
+	font-size: 18px;
+	font-family: "Mark Office for Medium" !important;
+	margin: 5px;
+	width: 255px;
+}
+
+.brnErrorText {
+	font-size: 16px;
+	margin-top:3%;
+}
+
+.brnErrorText2 {
+	font-size: 15px;
+	margin: 6% 0;
+	width: 250px;
+}
+
+.numberCircle {
+	font: 19px "Mark Office for MC", Arial, sans-serif;
+	width: 2em;
+	height: 2em;
+	box-sizing: initial;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	line-height: 2em;
+	box-sizing: content-box;
+	display: inline-block;
+	font-weight: bold;
+	z-index: 100;
+	margin-right: 2%;
+}
+
+.brnTimer {
+	background-color: rgba(141, 185, 46, 1);
+	border-radius: 6px;
+	color: white;
+	text-align: center;
+	padding: 2px 5px;
+	font-size: 14px;
+}
+
+.poweredByLogo {
+	float: right;
+}
+
+.openBankApp {
+	font-size: 15px;
+	height: auto;
+	background-color: #F1EFEB;
+	border-radius: 6px;
+	font-family: 'Mark Office for MC';
+	font-weight: 600;
+	color: rgba(0, 0, 0, 1);
+	text-align: center;
+	width: 33%;
+	border-width: 0px;
+	padding: 2%;
+}
+
+.intermediatePopup-container {
+	text-align: center;
+	display: none;
+}
+
+.attentionIcon {
+	margin-top: 30px;
+}
+
+.attentionSvgClass {
+	width: 50px;
+}
+
+.getCodeButton {
+	height: auto;
+	width: 33%;
+	padding: 2%;
+	background-color: rgba(255, 110, 0, 1);
+	border-radius: 6px;
+	font-family: 'Mark Office for MC';
+	font-size: 15px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 1);
+	text-align: center;
+	border-width: 0px;
+	margin-bottom: 1.93%
+}
+
+.getCodeImage {
+	height: 23px;
+	width: 21px;
+	position: absolute;
+}
+
+.intermediateClass {
+	height: 21px;
+	font-family: 'Mark Office for MC';
+	font-size: 18px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	-webkit-transform: scale(1.44);
+	-ms-transform: scale(1.44);
+	transform: scale(1.44);
+	margin-bottom: 60px;
+}
+
+.intermediateSvg {
+	height: 18px;
+	width: 18px;
+	position: absolute;
+}
+
+.moreAboutIcon {
+	margin-right: 23px;
+}
+
+.moreAboutSvg {
+	margin-top: 10px;
+}
+
+.continueAnother {
+	font-size: 17px;
+	font-weight: 600;
+	display: inline-grid;
+	margin-bottom: 0%;
+}
+
+.continueAnotherWidth {
+	width: 100%;
+	margin-top: 3%;
+}
+
+.getCodeText {
+	margin-left: 23px;
+}
+
+.imgAttention {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center
+}
+.brnError{
+	margin-left:0%;
+}
+#brnNotGenerated{
+	margin-left:16%;
+}
+.tryAgainBtn {
+	font-size: 15px;
+	border: none;
+	color: #fff;
+	width: 85%;
+	background: rgba(243, 112, 33, 1);
+	border-radius: 6px;
+	padding: 5%;
+	cursor: pointer;
+	font-family: "Mark Office For MC" !important;
+}
+
+.brnErrorHead {
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+#iconAttention1 {
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 25%;
+}
+
+#iconAttention2 {
+	display: none;
+	margin: 12px auto 0;
+	margin-left: 37%;
+	max-width: 25%;
+}
+#brnExpire{
+	margin-left:16%;
+}
+.brnErrorBlock {
+	display: none;
+	text-align: center;
+	margin-top: 11%;
+	margin-left:6%;
+	margin-right: auto;
+	width: 75%;
+}
+
+/* Notification popup css block */
+.notificationBlock {
+	margin-top: 19%;
+}
+
+.notificationGetCode {
+	width: 90%;
+	padding: 9px;
+}
+
+.notificationBtn {
+	font-size: 1em;
+	border: none;
+	color: #fff;
+	background: rgba(243, 112, 33, 1);
+	border-radius: 6px;
+	padding: 4%;
+	cursor: pointer;
+	font-family: "Mark Office for Medium" !important;
+	width: 80%;
+	margin-top: 8%;
+}
+
+.notificationHeading {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.notificationText {
+	font-size: .89em;
+}
+
+#notificationPopupStep1Content {
+	font-size: 1em;
+	font-family: "Mark Office for Medium" !important;
+}
+
+#notificationPopupStep2Content {
+	font-size: 1em;
+	font-family: "Mark Office for Medium" !important;
+	width: 96% !important;
+	margin-left: 0% !important;
+}
+
+.brnError {
+	padding: 5%;
+	width: 91%;
+}
+
+.row {
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.step-column {
+	flex: 56.20%;
+	padding: 5px;
+}
+
+.header {
+	width: 100%;
+	margin-top: 1%;
+}
+
+.pbbaLogo {
+	width: 260px;
+}
+
+.closeDiv {
+	float: right;
+}
+
+.close {
+	font-size: 20px;
+	float: right;
+}
+
+.close img {
+	/* margin-top: 10px; */
+	height: auto;
+}
+
+.close:hover {
+	cursor: pointer;
+}
+
+.introduction {
+	width: 100%;
+}
+
+.wrapper {
+	width: 100%;
+}
+
+.step-column div.first {
+	margin-right: 20px;
+	float: left;
+	width: 50px;
+	height: 50px;
+	background-color: #f37021;
+	text-align: center;
+	border-radius: 40px;
+	line-height: 30px;
+	font-weight: bold;
+	color: white;
+}
+
+.deviceLogoDiv {
+	float: left;
+	margin-top: -80px;
+	width: 45%;
+}
+
+.deviceLogo {
+	height: 240px;
+}
+
+.cfiLogosWrapper {
+	font-size: 0.85em;
+}
+
+.cfiLogosWrapper h2 {
+	font-size: 15px;
+}
+
+.cfiLogo {
+	height: 35px;
+	width: auto;
+	margin-right: 20px;
+}
+
+.footer {
+	width: 100%;
+	height: 25px;
+	margin-top: 31px;
+}
+
+.footer span {
+	display: inline-flex;
+}
+
+.poweredBy {
+	font-size: 15px;
+	float: right;
+	width: auto;
+	font-weight: bold;
+}
+
+.mc-logo {
+	height: 26px;
+	width: 210px;
+}
+
+#brnPopupStep1Content {
+	width: 100%;
+}
+
+#brnPopupStep2Content {
+	width: 100%;
+}
+
+.footerLogo {
+	float: right;
+	margin-left: 8%;
+	width: 27%;
+	margin-top: 1%;
+	height: 31px;
+	font-size: 0px;
+}
+
+#brnPopupStep1Content {
+	width: 75%;
+	margin-left: 10%;
+}
+
+#brnPopupStep2Content {
+	width: 75%;
+	margin-left: 10%;
+}
+
+#pbbaLogoId:focus {
+	outline: none;
+}
+
+#customHeadingH4:focus {
+	outline: none;
+}
+
+.customHeadingH4 {
+	font-family: 'Mark Office for MC';
+	font-size: 17px;
+	color: rgba(48, 48, 48, 1);
+	text-align: center;
+	padding-bottom: 9%;
+	padding-left: 0px;
+	display: inline-block;
+	line-height: 25px;
+	/* margin-block-start: 1.33em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px; */
+	font-weight: bold;
+}
+
+.step3Label {
+	font-size: 0px;
+}
+
+/* LOW RESOLUTION DESKTOP */
+@media screen and (max-device-height:768px)
+{
+.custom-row {
+	max-width: 93%;
+}
+
+.pbbaLogo {
+	width: 35%;
+}
+
+.close {
+	/* margin-top: 2%; */
+}
+
+.close img {
+	margin: 0;
+	height: auto;
+}
+
+#list-of-banks {
+	margin: 20px 0;
+}
+
+.notificationText {
+	font-size: .8em;
+}
+
+.numberCircle {
+	width: 35px;
+	height: 35px;
+}
+
+#brnCodeBlock {
+	margin-top: 33%;
+	margin-left: 9%;
+}
+
+#brnExpire{
+	margin-left:16%;
+}
+.brnErrorBlock {
+	text-align: center;
+	margin-top: 10%;
+	margin-right: auto;
+	width: 76%;
+}
+
+.brnError{
+	margin-left:16%;
+}
+#brnNotGenerated{
+	margin-left:6%;
+}
+
+.notificationBlock {
+	margin-top: 14%;
+}
+
+.step1 {
+	background-image: url('../images/brn-popup/phone_bank_step1_svg.png');
+	background-size: 56%;
+	background-position-x: 5%;
+}
+
+.step2 {
+	background-image: url('../images/brn-popup/phone_menu_step2_svg.png');
+	background-size: 56%;
+	background-position-x: 5%;
+}
+
+.step1, .step2, .step1Mobile, .step2Mobile {
+	width: 220px;
+	height: 240px;
+	float: left;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position-y: top;
+}
+
+.step1Mobile {
+	background-position-x: 30%;
+	background-size: 74%;
+}
+
+.step2Mobile {
+	background-position-x: 27%;
+	background-size: 56.5%;
+}
+
+.step3Mobile {
+	width: 255px;
+	height: 255px;
+}
+
+#list-of-banks p {
+	font-size: 1.3em;
+	margin: 1% 0;
+}
+
+.cfiLogo {
+	height: 30px;
+}
+
+.header {
+	margin-top: 1%;
+}
+
+.step1TextDesktop, .step2TextDesktop, .step3TextDesktop {
+	font-size: .8em;
+	width: 180px;
+}
+
+.step3 {
+	background-image: url('../images/brn-popup/phone_bank_step3_bg_svg.png');
+	width: 271px;
+	height: 240px;
+	float: left;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position-y: top;
+	background-position-x: 20%;
+	background-size: contain;
+}
+
+.step3-content {
+	width: 271px;
+	height: 240px;
+	font-size: 0px;
+}
+
+.step1TextDesktop, .step2TextDesktop, .step3TextDesktop {
+	width: 150px;
+	text-align: center;
+}
+
+.step3TextDesktop {
+	margin-left: 25%;
+}
+
+.introduction {
+	width: 100%;
+}
+
+.continueAnotherWidth {
+	margin-top: 3%;
+}
+
+.getCodeButton {
+	width: 37%;
+	padding: 2%;
+}
+
+.openBankApp {
+	font-size: 15px;
+	padding: 2%;
+	width: 37%;
+	margin: 1%;
+}
+
+#iconAttention1 {
+	max-width: 20%;
+	height: auto;
+	
+}
+
+#iconAttention2 {
+	max-width: 20%;
+	height: auto;
+	margin-left:50%;
+}
+
+.brnErrorHeading {
+	margin: 4%;
+}
+
+.footerLogo {
+	float: right;
+	margin-left: 8%;
+	margin-top: 0px;
+	width: 30%;
+	height: 31px;
+	font-size: 0px;
+}
+
+}
+
+/* All mobiles */
+@media only screen and (min-device-width: 360px) and (min-device-height:
+	568px) and (orientation: portrait) {
+	[class*="mobile"] {
+		display: block;
+	}
+	[class*="desktop"] {
+		display: none !important;
+	}
+	.poweredByLogo {
+		float: none;
+	}
+	.close img {
+		width: 50%;
+		height: auto;
+		margin-top: 13%;
+	}
+	.pbbaLogoDiv {
+		margin-top: 3%;
+	}
+	.pbbaLogo {
+		width: 55%;
+		margin-left: 5%;
+	}
+	.introduction {
+		width: 100%;
+	}
+	.getCodeButton {
+		width: 80%;
+		padding: 4%;
+	}
+	.moreAboutSvg {
+		font-size: 12px;
+	}
+	.continueSecondContent {
+		font-size: 0.85em;
+	}
+	.continueFirstContent {
+		font-size: 14px;
+	}
+	.continueSecondContent {
+		font-size: 14px;
+	}
+	.openBankApp {
+		width: 80%;
+		font-size: 15px;
+		padding: 4%;
+	}
+	.getCodeImage {
+		height: 20px;
+		width: 19px;
+		position: absolute;
+	}
+	.close {
+		margin-top: 2%;
+	}
+	hr {
+		margin: 8% 0 3%;
+	}
+	.continueAnotherWidth {
+		margin-top: 12%;
+	}
+	.step1Wrapper, .step2Wrapper, .step1WrapperMobile, .step2WrapperMobile {
+		width: 50%;
+	}
+	.step3Wrapper {
+		width: 100%;
+		margin-bottom: 5%;
+	}
+	.step3 {
+		background: #e4e0d8;
+		border-radius: 11px;
+		height: 121px;
+		width: 239px;
+		float: left;
+		margin: 6% 10%;
+		margin-bottom: 10%;
+	}
+	.step3::before {
+		content: '3';
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		border-radius: 20px;
+		background-color: #ff6e00;
+		float: left;
+		margin: -10px;
+		border: 2.5px solid #FFF;
+		color: WHITE;
+		font-size: 15px;
+		line-height: 25px;
+	}
+	.step3-content {
+		position: absolute;
+		height: 121px;
+		width: 239px;
+		margin: 17px 34px;
+		font-size: 0px;
+	}
+	.step3Mobile {
+		background: #e4e0d8;
+		border-radius: 11px;
+		height: 121px;
+		width: 239px;
+		float: left;
+		margin: 6% 11%;
+	}
+	.notificationHeading {
+		font-size: .8em;
+		font-weight: bold;
+	}
+	.notificationBlock {
+		margin-top: 0;
+	}
+	.notificationBtn {
+		margin-top: 0;
+	}
+	.notificationText {
+		font-size: .6em;
+	}
+	.notificationBtn {
+		font-size: .7em;
+		border-radius: 4px;
+		padding: 4%;
+		width: 73%;
+	}
+	.step1, .step2 {
+		height: 148px;
+		background-size: 37%;
+		background-position-x: 21%;
+		width: 200px;
+		font-size: 0px;
+	}
+	.step1Mobile {
+		height: 175px;
+		background-size: 59%;
+		background-position-x: 21%;
+		width: 200px;
+	}
+	.step2Mobile {
+		height: 175px;
+		background-size: 45%;
+		background-position-x: 21%;
+		width: 200px;
+	}
+	.step1TextDesktop, .step2TextDesktop {
+		width: 130px;
+		text-align: center;
+		font-size: 0.71em;
+		margin: auto;
+	}
+	.step1TextDesktop span, .step2TextDesktop span, .step3TextDesktop span {
+		color: rgba(255, 110, 0, 1);
+		font-weight: bold;
+	}
+	.numberCircle {
+		font-size: 13px;
+		border-radius: 4px;
+		line-height: 26px;
+		width: 28px;
+		height: 28px;
+	}
+	.refresh-in {
+		font-size: 13px;
+		width: 180px;
+		margin: 2% auto 0 auto;
+	}
+	.seconds {
+		font-size: 13px;
+	}
+	#brnCodeBlock {
+		margin-top: 13%;
+		margin-left: 1%;
+	}
+	.step3TextDesktop {
+		width: 138px;
+		text-align: center;
+		font-size: 0.73em;
+		margin: 143px 0 0 85px;
+		position: absolute;
+	}
+	.brnErrorBlock {
+		text-align: center;
+		margin: auto;
+	}
+	.brnErrorHeading {
+		font-size: 16px;
+		width: 60%;
+		margin: auto;
+	}
+	.brnErrorText {
+	font-size: 12px;
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 60%;
+	}
+	.tryAgainBtn {
+		font-size: 13px;
+		width: 80%;
+		padding: 3%;
+		margin: 1%;
+	}
+	.brnErrorBlock {
+		text-align: center;
+		margin: 7px auto !important;
+		width: 100%;
+	}
+	.brnErrorText2 {
+		font-size: 10px;
+		margin: 2%;
+		width: auto;
+	}
+	.brnErrorHeading2 {
+		font-size: 13px;
+		font-family: "Mark Office for Medium" !important;
+		margin:6% 0% 0% 0%;
+		width: 100%;
+	}
+	.cfiLogos {
+		width: 95%;
+		margin: 0 auto;
+	}
+	.cfiLogo {
+		height: 22px;
+		margin: 0 5px;
+	}
+	.wrkBank {
+		margin: 2% 0;
+		padding-top: 2%;
+	}
+	.footerLogo {
+		float: left;
+		margin-left: 8%;
+		width: 85%;
+		margin-top: 0px;
+		height: 32px;
+		font-size: 0px;
+	}
+	.brnTimer {
+		border-radius: 4px;
+		padding: 1px 3px;
+		font-size: 10px;
+	}
+	.customHeadingH4 {
+	font-size: 1em;
+	}
+}
+
+/* iPhone 5 & 5S in portrait & landscape */
+@media only screen and (max-device-width : 320px) and (orientation :
+	portrait) {
+	[class*="desktop"] {
+		display: none !important;
+	}
+	[class*="mobile"] {
+		display: block;
+	}
+	.close img {
+		width: 50%;
+		height: auto;
+	}
+	.pbbaLogo {
+		width: 50%;
+		margin-left: 9%;
+	}
+	.pbbaLogoDiv {
+		margin-top: 3%;
+	}
+	.continueFirstContent {
+		font-size: 0.8em;
+		margin-top: 3.6%;
+		margin-bottom: 7%;
+	}
+	.introduction {
+		width: 100%;
+		margin: auto;
+	}
+	.getCodeButton {
+		width: 80%;
+		padding: 3%;
+	}
+	.moreAboutSvg {
+		font-size: 12px;
+	}
+	.continueSecondContent {
+		font-size: 0.8em;
+	}
+	.openBankApp {
+		width: 80%;
+		font-size: 15px;
+		padding: 4%;
+	}
+	.getCodeImage {
+		height: 20px;
+		width: 19px;
+		position: absolute;
+	}
+	hr {
+		margin: 8% 0 3%;
+	}
+	.continueAnotherWidth {
+		margin-top: 10%;
+	}
+	.continueAnother {
+		font-size: 15px;
+	}
+	.step1Wrapper, .step2Wrapper {
+		width: 50%;
+	}
+	.step1WrapperMobile, .step2WrapperMobile {
+		float: left;
+		width: 49%;
+	}
+	.step3Wrapper {
+		width: 100%;
+		margin-bottom: 3%;
+	}
+	.step3 {
+		background: #e4e0d8;
+		border-radius: 16px;
+		height: 113px;
+		width: 221px;
+		float: left;
+		margin: 4% 5%;
+	}
+	.step3::before {
+		content: '3';
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		border-radius: 20px;
+		background-color: #ff6e00;
+		float: left;
+		margin: -10px;
+		border: 2.5px solid #FFF;
+		color: WHITE;
+		font-size: 15px;
+		line-height: 25px;
+	}
+	.step3-content {
+		position: absolute;
+		height: 113px;
+		width: 221px;
+		margin: 2% 3%;
+		font-size: 0px;
+	}
+	.step3Mobile {
+		background: #e4e0d8;
+		border-radius: 9px;
+		height: 121px;
+		width: 239px;
+		float: left;
+		margin: 6% 7%;
+	}
+	.notificationHeading {
+		font-size: .8em;
+		font-weight: bold;
+	}
+	.notificationText {
+		font-size: .6em;
+	}
+	.notificationBtn {
+		font-size: .7em;
+		border-radius: 4px;
+		padding: 4%;
+		width: 73%;
+	}
+	.step1Mobile {
+		height: 175px;
+		background-size: 59%;
+		background-position-x: 21%;
+		width: 200px;
+	}
+	.step2Mobile {
+		height: 175px;
+		background-size: 45%;
+		background-position-x: 21%;
+		width: 200px;
+	}
+	.step1, .step2 {
+		height: 132px;
+    background-size: 30%;
+    margin: auto 17%;
+		background-position-x: 0%;
+	}
+	.step1TextDesktop, .step2TextDesktop {
+		width: 118px;
+		text-align: center;
+		font-size: 0.65em;
+		margin: auto;
+	}
+	.notificationBlock {
+		margin-top: 0;
+	}
+	.notificationBtn {
+		margin-top: 0;
+	}
+	.step1TextDesktop span, .step2TextDesktop span, .step3TextDesktop span {
+		color: rgba(255, 110, 0, 1);
+		font-weight: bold;
+	}
+	.numberCircle {
+		font-size: 11.5px;
+		border-radius: 4px;
+		line-height: 28px;
+		width: 28px;
+		height: 28px;
+	}
+	.refresh-in {
+		font-size: 13px;
+		width: 180px;
+		margin: 2% auto 0 auto;
+	}
+	.seconds {
+		font-size: 13px;
+	}
+	#brnCodeBlock {
+		margin-top: 14%;
+		margin-left: auto;
+	}
+	.step3TextDesktop {
+		width: 138px;
+		text-align: center;
+		font-size: 0.73em;
+		margin: 39% 0 0 16%;
+		position: absolute;
+	}
+	.wrkBank {
+		margin: 2%;
+		padding-top: 9%;
+	}
+	.brnErrorHeading {
+		font-size: 16px;
+		width: 60%;
+		margin-left: 26%;
+		margin: 5px 5px 5px 68px;
+	}
+	.brnErrorBlock {
+		text-align: center;
+		margin: auto;
+	}
+	.brnErrorHeading {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
+	.brnErrorText {
+		    font-size: 11px;
+    margin: 3%;
+    width: 62%;
+    margin-left: 20%;
+	}
+	.tryAgainBtn {
+		font-size: 12.5px;
+		width: 80%;
+		padding: 3%;
+		margin-left: 3%;
+	}
+	.brnErrorBlock {
+		text-align: center;
+		margin: 4% auto;
+		width: 100%;
+	}
+	#brnNotGenerated {
+    margin-left: 1%;
+}
+#brnExpire{
+	margin-left:0%;
+}
+	.brnErrorText2 {
+		font-size: 9px;
+		margin: 2%;
+		padding: 1% 0% 1% 0%;
+		width: auto;
+	}
+	.brnErrorHeading2 {
+		font-size: 13px;
+		font-family: "Mark Office for Medium" !important;
+		margin: 9% 0 0 0;
+		width: 100%;
+	}
+	.cfiLogos {
+		width: 90%;
+		margin: auto;
+	}
+	.cfiLogo {
+		height: 20px;
+		margin: 0 5px;
+	}
+	.wrkBank {
+		margin: 2% 0 0;
+	}
+	.footerLogo {
+		float: left;
+		margin-left: 8%;
+		width: 85%;
+		margin-top: 0px;
+		height: 31px;
+		font-size: 0px;
+	}
+	.brnTimer {
+		padding: 1px 3px;
+		font-size: 12px;
+		border-radius: 4px;
+	}
+	.custom-row {
+		margin-top: 0px;
+	}
+	
+	.customHeadingH4{
+		font-size: 1em;
+	}
+}
+
+/* iPad portrait */
+@media only screen and (min-device-height: 1024px) and
+	(min-device-width: 768px) and (orientation: portrait) {
+	[class*="desktop"] {
+		display: none !important;
+	}
+	[class*="mobile"] {
+		display: block;
+	}
+	.close {
+		margin-top: 2%;
+	}
+	.close img {
+		width: 70%;
+	}
+	.continueAnother {
+		font-size: 24px;
+	}
+	.continueFirstContent {
+		font-size: 18px;
+	}
+	.getCodeButton {
+		width: 68%;
+		padding: 3%;
+		font-size: 20px;
+	}
+	.moreAboutSvg {
+		font-size: 14px;
+	}
+	.continueSecondContent {
+		font-size: 18px;
+	}
+	.openBankApp {
+		width: 68%;
+		font-size: 20px;
+		padding: 3%;
+	}
+	.step1, .step2 {
+		height: 235px;
+		background-size: 60%;
+		background-position-x: 70%;
+		width: 200px;
+	}
+	.step1Mobile {
+		height: 235px;
+		background-size: 71%;
+		background-position-x: 75%;
+		width: 220px;
+	}
+	.step2Mobile {
+		height: 235px;
+		background-size: 51%;
+		background-position-x: 50%;
+		width: 235px;
+	}
+	.step3Mobile {
+		background: #e4e0d8;
+		border-radius: 16px;
+		height: 150px;
+		width: 300px;
+		float: left;
+		margin: 6% 20%;
+	}
+	.notificationHeading {
+		font-size: 1em;
+	}
+	.notificationText {
+		font-size: .9em;
+		margin: 3%;
+	}
+	.step1TextDesktop, .step2TextDesktop {
+		width: 196px;
+		font-size: 1em;
+	}
+	.step3::before {
+		content: '3';
+		width: 32px;
+		height: 32px;
+		border-radius: 24px;
+		border: 3px solid #fff;
+		font-size: 18px;
+		line-height: 34px;
+	}
+	.step3-content {
+		position: absolute;
+		height: 155px;
+		width: 300px;
+		margin: 4% 12%;
+		font-size: 0px;
+	}
+	.step3 {
+		height: 155px;
+		width: 300px;
+		margin: 6% 20%;
+		margin-bottom: 35px;
+	}
+	.step3TextDesktop {
+		width: 180px;
+		font-size: 1em;
+		margin: 186px 0 0 20%;
+	}
+	.refresh-in {
+		font-size: 16px;
+		width: 100%;
+	}
+	.seconds {
+		font-size: 16px;
+	}
+	.numberCircle {
+		font-size: 16px;
+		border-radius: 5px;
+		line-height: 32px;
+	}
+	.wrkBank {
+		font-size: 1.2em;
+	}
+	.cfiLogo {
+		height: 30px;
+		margin: 0 10px;
+	}
+	.cfiLogos {
+		width: 75%;
+		margin: 0 auto;
+	}
+	.brnErrorHeading {
+		font-size: 19px;
+	}
+	.brnErrorText {
+		font-size: 16px;
+		 margin: 3% 0% 1% 16%;
+		 width:70%;
+	}
+	.tryAgainBtn {
+		font-size: 16px;
+		padding: 3%;
+	}
+	.brnErrorHeading2 {
+		font-size: 19px;
+		margin-left:3%;
+	}
+	.brnErrorText2 {
+		font-size: 12px;
+		margin-left: 7%;
+   		padding: 2% 0% 1% 0%;
+		width: 90%;
+	}
+	.brnTimer {
+		padding: 1px 3px;
+		font-size: 12px;
+		border-radius: 4px;
+	}
+	.brnError{
+		margin-left:5%;
+	}
+	.step3Wrapper {
+		margin-bottom: 10%;
+	}
+}

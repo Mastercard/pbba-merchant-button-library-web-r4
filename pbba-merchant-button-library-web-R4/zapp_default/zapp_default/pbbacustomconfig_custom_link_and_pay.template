@@ -1,0 +1,277 @@
+/**  Copyright (c) 2020 Mastercard
+ 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+    http://www.apache.org/licenses/LICENSE-2.0
+ 
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ 
+*/
+
+/* 
+ * This configuration file template is used to define and override variables and functions for the Pay By Bank App Custom Web Merchant Button.
+ * 
+ */
+
+
+jQuery.support.cors = true;
+if (!window.console) console = {log: function() {}};
+
+/* Define the PBBA variables */
+var zappVersion = "4.0.0"; // Current web merchant button library version.
+var cookieManagementUrl = "https://paybybankappcookie.mastercard.co.uk/static/cookie-management/pbba-3550ce7763041531b9214e9e23986b37/" // Cookie management URL for PayConnect.
+var merchantPollInterval = 5000; // Merchant poll interval of 5 seconds to poll the merchant server for link and payment notification.
+var cfiLogosURL = "https://paybybankappcdn.mastercard.co.uk/static/ml/pbba-3550ce7763041531b9214e9e23986b37/merchant-lib/banks.json"; // CDN location to fetch the CFI logos
+
+var clickedButton = null; // This variable holds the reference to the custom button
+
+/* Initialise the custom button engine and set the cookie management URL and the CDN location to fetch the CFI logos from */
+zapppopup.load(zappVersion, {
+	cfiLogosURL: cfiLogosURL
+} );
+
+/* Initialize PayConnect and cookie management functionality. */
+
+window.onload = function() {
+	setupPayConnect(cookieManagementUrl, document); 
+}
+
+/* Functions to format and return the timezone offset */
+function format(value) {
+	return value < 10 ? '0' + value : value;
+}
+
+function getUTCOffset(date) {
+	var sign = (date.getTimezoneOffset() > 0) ? "-" : "+";
+	var offset = Math.abs(date.getTimezoneOffset());
+	var hours = format(Math.floor(offset / 60));
+	var minutes = format(offset % 60);
+	return sign + hours + ":" + minutes;
+}
+
+/* Define the event listeners for the custom merchant button*/
+function listener(event) {
+	
+	try {
+		var data = JSON.parse(event.data);
+	} catch (exception) {
+		return;
+	}
+	
+	/* This event is triggered by the button library on a transaction timeout */
+	if (data.eventType == "pbba.transaction.timeout") {
+		// Merchant to implement logic to abort the current polling process
+	}
+	
+	/* This event is triggered by the button library when the PBBA button on the popup is clicked */
+	if (data.eventType == "pbba.button.regen.click") {
+		
+		// Merchant to implement logic to stop the current polling process
+		
+		// Start a new payment process.
+		postPaymentRequestToMechantServer(clickedButton);
+	}
+	
+	/* This event is triggered by the button library when the popup is closed */
+	if (data.eventType == "pbba.popup.close") {
+		
+		// Merchant to implement logic to stop the current polling process
+		
+		// Stop the timers and close the popup.
+		zapppopup._stopTimers();
+		zapppopup._removePopup(true);
+	}
+	
+}
+
+/* Register the event listeners defined above */
+if (window.addEventListener){
+	 addEventListener("message", listener, false)
+} else {
+	 attachEvent("onmessage", listener)
+}
+
+/* This method is used to submit a link and payment request to the merchant server */
+function postLinkAndPaymentRequestToMechantServer(clickedBtn) {
+
+				clickedButton = clickedBtn; // This is the custom button reference
+
+		/* 
+		 * The only data that is required to be posted to the merchant server from the PBBA Web Merchant Button is the merchantLinkingFlag and the browserInfo.
+		 * merchantRequestToLinkAndPayPostData is the merchant's request to pay object that is posted to the merchant's server.
+		 * 
+		 */
+			
+		/*
+		 *  The below merchantRequestToLinkAndPayPostData is a JSON object defined by merchant to hold the checkout information 
+		 *  and other things, in addition to all of merchants data element and the browserInfo element 
+		 *  to this object.
+		 *  
+		 */
+	
+				var merchantRequestToLinkAndPayPostData = {
+						"merchantLinkingFlag" : 1,  // The value 1 is equivalent to true which indicates it is a link and pay journey. 
+						"browserInfo" : {
+							"userAgent": navigator.userAgent,
+				            "timeZone": getUTCOffset(new Date()),
+				            "screen": screen.width+"x"+screen.height,
+							"activeHeaders": "Accept-Encoding:*;Accept-Language:en"
+						}
+				};
+	
+		/* 
+		 *	1.	Post the data to the merchant server.
+		 *
+		 *	2.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the merchant server:
+		 * 		
+		 *		A.	Create a response object by populating the following mandatory PBBA attributes:
+		 *
+		 *		NOTE: merchantRequestToPayResponseObject is assumed here to be the merchant's variable name of the JSON response object for the request to pay from the merchant server
+		 *
+		 */
+	
+				var response = new zapppopup.response.payment({
+					success : true, // Leave it as is
+					secureToken : merchantRequestToPayResponseObject.secureToken,
+					brn : merchantRequestToPayResponseObject.pbbaCode,
+					retrievalExpiryInterval : merchantRequestToPayResponseObject.retrievalTimeOutPeriod,
+					confirmationExpiryInterval : merchantRequestToPayResponseObject.confirmationTimeoutPeriod,
+					notificationSent: merchantRequestToPayResponseObject.notificationSent,
+					cfiShortName: merchantRequestToPayResponseObject.bankName,
+					requestType: "RequestToLinkAndPay", // Leave it as it is
+				});
+	
+				
+
+		/* 
+		 * 		B.	If an M-Comm journey has been performed before, hasApp cookie will be set on the mobile browser. Check for the hasApp cookie and invoke the app if present. 
+		 * 
+		 */
+				
+				if (zapppopup.getCookie("hasApp")) {
+					zapppopup._invokeAppWithResponse(clickedButton, response); // Invoke the app
+					pollMerchantServerForPaymentNotification(response.secureToken); // Start the polling process
+		           	return;
+		         } 
+	
+		/* 
+		 * 		D.	Invoke the popup, start the notification timers and start the polling process.
+		 * 
+		 */
+				
+				zapppopup._addPopup(clickedButton).sendMessage(clickedButton, "com.zapp.popup.data", response); // Display the popup.
+			
+				zapppopup._startTimers(clickedButton); // Start the notification timers.
+			
+				pollMerchantServerForPaymentNotification (response.secureToken); // Invoke the polling method and pass the securetoken to it.
+
+		
+		/*
+		 *	3.	ERROR - Upon receipt of an error from the merchant server:
+		 *		
+		 *		A.	Display an error message on the popup by triggering the following event: 
+		 *
+		 */
+		
+				zapppopup._addPopup(clickedButton).sendMessage(clickedButton, "com.zapp.popup.state", 
+						"requestFailure"); // Display the error message on the popup.
+}
+
+function pollMerchantServerForPaymentNotification(secureToken) {
+	
+		/*  NOTE: If jQuery.ajax is used for polling the merchant server and the method is GET then Zapp suggests doing the following to prevent caching:
+		 * 
+		 *  Step 1: Add the following property to AJAX call:
+		 *  		cache: false
+		 *  
+		 *  Step 2: Add a cache busting parameter to the polling URL. This parameter can be any random number (for example, date timestamp) 
+		 *  		appended to the polling URL. For example, if the polling URL is "/responseForPayment.aspx?secureToken=12345678&orderId=12345" then
+		 *  		the URL with a cache busting parameter called time would be:  
+		 *  		"/responseForPayment.aspx?secureToken=12345678&orderId=12345&time="+Date.now()
+		 *  
+		 */
+	
+		/*	1. 	Use this method to poll the merchant server for a response every X seconds.
+		 * 	  	X is the value for merchantPollInterval.
+		 *
+		 *	2.	secureToken must be passed to the merchant server to enable polling the Zapp server for a 
+		 *		Link And payment notification.
+		 *
+		 *	3.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the merchant server:
+		 *
+		 *		A.	Stop the timers and remove the popup:
+		 *
+		 */
+	
+				zapppopup._stopTimers();
+				zapppopup._removePopup(true);
+	
+		
+		/*
+		 *		B. Continue further order processing.
+		 *
+		 *	4.	IN PROGRESS - Upon receipt of an IN PROGRESS status from the distributor server:
+		 *		
+		 *		A.	Continue polling by invoking the function pollMerchantServerForLinkAndPaymentNotification() as follows:
+		 *
+		 */
+				setTimeout(function() {
+					pollMerchantServerForPaymentNotification(secureToken);
+				}, merchantPollInterval);
+				
+		/*
+		 *	5.  ERROR - Upon receipt of an error from the merchant server:
+		 *		
+		 *		A.	Stop the polling process.
+		 *		B. 	Stop the timers and close the popup
+		 *
+		 */
+				zapppopup._stopTimers(); // Stop the timers
+				zapppopup._removePopup(true); // Remove the popup
+				
+		 /* 
+		  * Example of a jQuery AJAX polling mechanism using method GET with caching set to false and a cache buster (time) in the URL.
+		  * 
+		  */ 
+				
+				jQuery.ajax({
+					url : merchantPollingUrl, // Merchant URL to poll for the payment notification. Modify appropriately.
+					dataType : "json", // If merchant expects a JSON object to be returned from the polled server. Modify appropriately.
+					crossDomain :true, // If merchant requires cross domain polling. Modify appropriately.
+					cache:  false, // Disables caching in IE
+					type : "GET", // In case the polling method is GET. Modify appropriately.
+					contentType : "application/json; charset=UTF-8", // The content type to be posted to the polling server. Modify appropriately.
+					success : function(merchantGetPaymentStatusObject) { // merchantGetLinkAndPaymentStatusObject is the merchant's response object from the polled server
+			
+						var merchantResponse = null;
+						
+						// Check for the response status from the polled server. If the status is in progress the continue polling using the following:
+						
+							setTimeout(function() {
+								pollMerchantServerForPaymentNotification(secureToken);
+							}, merchantPollInterval);
+						
+						// Check for the response status from the polled server. If the status is success (indicating an authorised or a declined transaction) then do the following:
+						// Stop the timers and close the popup
+							
+							zapppopup._stopTimers();
+							zapppopup._removePopup(true);
+							
+						// Continue further merchant specific processing. Example - showing the order success or cancel page.
+			
+					},
+					error : function(merchantGetPaymentStatusObject) {
+						// Error handling
+						// Stop the polling process and then do the following:
+						
+						zapppopup._stopTimers(); // Stop the timers
+						zapppopup._removePopup(true); // Remove the popup
+					}
+				});
+} 

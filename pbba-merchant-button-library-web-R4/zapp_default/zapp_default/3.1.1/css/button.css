@@ -1,0 +1,155 @@
+/*******************************************************************************
+ * Copyright 2016 IPCO 2012 Limited
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License "); you may not
+ * use this file except in compliance with the License . You may obtain a copy
+ * of the License at
+ * 
+ * http: // www.apache.org /licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS " BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied . See the
+ * License for the specific language governing permissions and limitations under
+ * the License .
+ ******************************************************************************/
+ /* START CM CHANGES */
+ 
+ /* Styles for Pay by Bank app HREF */
+ .payByBankApp {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	/*border-radius: 10px;*/
+	text-align: center;
+	-ms-overflow-y:hidden;
+	overflow-y:hidden;
+}
+
+
+ /* Styles for the main container */
+ .mainContainer {
+	background-color: #ff6e00;
+	border-radius: 5px;
+	display: table-cell;
+	vertical-align: middle;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* Styles for the left container for PBBA logo */
+.pbbaLogoContainer {
+	padding-left: 0px !important;
+	position: absolute;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	top: 50%;
+	margin-left: 3.9%;
+}
+
+.pbbaLogo {
+	vertical-align: middle; 
+}
+
+/* Styles for the right container for CFI logos */
+.cfiLogosContainer {
+	position: absolute;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	top: 50%;
+}
+
+.cfiLogoDiv {
+	border-radius:8px;
+	background-color: #fff0;
+	display: table-cell;
+}	
+
+.cfiLogo {
+	border-radius:8px;
+	border: none;
+	display: block;
+	vertical-align: middle;
+}
+.centerAlign{
+		position: relative;
+	    margin-left: auto;
+	    margin-right: auto
+	    }
+/* END CM CHANGES */
+
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+@media only screen and (max-device-width:768px) and
+	(min-device-width:320px) {
+	.right div img {
+		border-radius: 6px;
+		border: 1px solid #fff;
+	}
+	.right div {
+		background-color: transparent;
+	}
+	#pbba-button-frame-0 {
+		height: 57px;
+	}
+	#payByZapp div.left {
+		padding-left: 8px;
+		padding-top: 14px;
+	}	
+}
+
+/* iPhone 5 */
+@media only screen and (min-device-width : 320px) and (max-device-width
+	: 568px) {
+	#payByZapp div.left {
+		padding-top: 21px;
+	}
+	#payByZapp div.right {
+	margin-top: 6% ;
+ }
+}
+
+/* iPhone 6 */
+@media only screen and (min-device-width : 375px) and (max-device-width
+	: 667px) {
+	#payByZapp div.left {
+		padding-top: 5%;
+	}
+	#payByZapp div.right {
+	margin-top: 4% ;
+ }
+}
+
+/* iPhone 6+ */
+@media only screen and (min-device-width : 414px) and (max-device-width
+	: 736px) {
+	#payByZapp div.left {
+		padding-top: 4%;
+	}
+	#payByZapp div.right {
+	margin-top: 4% ;
+ }
+}
+
+/* Samsung Galaxy S5 */
+@media only screen and (max-device-width: 360px) and (max-device-height:
+	640px) {
+	#payByZapp div.left {
+		padding-top: 6%;
+	}
+	.long img {
+		height: 100%;
+	}	
+}

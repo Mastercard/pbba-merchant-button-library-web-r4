@@ -1,0 +1,805 @@
+/* Copyright 2016 IPCO 2012 Limited
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. */
+
+/* All desktop */
+body {
+	font-family: "Mark Office For MC";
+	font-size: 16px;
+}
+
+h2 {
+	font-size: 1.250em;
+}
+
+.cfiLogos {
+	width: 100%;
+}
+
+p {
+	font-size: 1.1em;
+}
+.it-work-like-this{
+	font-size: 1.1em;
+}
+
+[class*="mobile"] {
+	display: none;
+}
+
+[class*="desktop"] {
+	display: block;
+	font-size: 1.2em;
+	width: 115%;
+}
+
+.more-about-content {
+	margin: auto;
+	padding: 1%;
+	border: 1px solid #888;
+	max-width: 1024px;
+	max-height: 550px;
+	height: 550px;
+	font-family: "Mark Office for MC" !important;
+	background: url('../images/more-about/more-about-artwork.png'),
+		url('../images/more-about/powered_by_mc-1.svg');
+	background-size: 45%, 210px 26px;
+	background-repeat: no-repeat;
+	background-position: 85% 48%, 98% 98%;
+	margin-top: 3%;
+	background-color: #fefefe;
+}
+
+.more-about-container {
+	position: fixed;
+	z-index: 1;
+	padding-top: 2%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.header {
+	width: 100%;
+	margin-top: 1%;
+}
+
+.pbbaLogoDiv {
+	float: left;
+}
+
+#moreAboutLogoFocus{
+	font-size:0.5px;
+	color:#ffffff;
+	outline:none;
+}
+
+.closeDiv {
+	float: right;
+}
+
+.close {
+	font-size: 1.250em;
+	float: right;
+}
+
+.close img {
+	margin-top: 10px;
+	height: auto;
+}
+
+.close:hover {
+	cursor: pointer;
+}
+
+.fontWeigthBold {
+	font-family: "Mark Office for Bold";
+}
+
+.fontWeigthMedium {
+	font-family: "Mark Office for Medium";
+}
+
+.fontWeigthMC {
+	font-family: "Mark Office for MC";
+}
+
+.introduction {
+	width: 75%;
+	font-family: "Mark Office for MC" !important;
+	margin-top: 2%
+}
+
+.wrapper {
+	width: 100%;
+}
+
+.how-it-works {
+	width: 50%;
+	float: left;
+	font-size: 1.25em;
+	padding-top: 4%;
+}
+
+.how-it-works .step {
+	margin-bottom: 5%;
+}
+
+.how-it-works div.first {
+	margin-right: 20px;
+	float: left;
+	width: 30px;
+	height: 30px;
+	background-color: #f37021;
+	text-align: center;
+	border-radius: 40px;
+	line-height: 30px;
+	font-weight: bold;
+	color: white;
+}
+
+.how-it-works div.second.desktop {
+	display: flex;
+}
+
+.deviceLogoDiv {
+	float: left;
+	margin-top: -7%;
+	width: 50%;
+}
+
+.deviceLogo {
+	width: 80%;
+}
+
+.cfiLogosWrapper {
+	font-size: 0.85em;
+	margin-top: 1%;
+}
+
+.cfiLogosWrapper h2 {
+	font-size: 0.938em;
+}
+
+.cfiLogosWrapper p {
+	    font-size: 1.5em;
+    margin-bottom: .5%;
+}
+
+.cfiLogo {
+	height: 35px;
+	width: auto;
+	margin-right: 5px;
+}
+
+.footer {
+	width: 100%;
+	height: 25px;
+	margin-top: 8px;
+}
+
+.new-mc-logo {
+	float: right;
+	width: 210px;
+	height: 26px;
+}
+
+.footer span {
+	display: inline-flex;
+}
+
+.poweredBy {
+	font-size: 0.938em;;
+	float: right;
+	width: auto;
+	font-weight: bold;
+}
+
+.mc-logo {
+	height: 26px;
+	width: 210px;
+}
+
+.ghostFooter {
+	width: 100%;
+	height: 20px;;
+}
+
+/* this class aligns steps number in left side. */
+.step_left {
+	width: 11%;
+	float: left;
+	margin: 0% 2% 0 0;
+}
+
+/* this class aligns steps number in right side. */
+.step_right {
+	width: 85%;
+	font-size: 1em;
+}
+
+.step img {
+	width: 2em;
+}
+
+#headerLogo:focus {
+	outline: none;
+}
+
+#MoreAboutPbbaLogo:focus {
+	outline: none;
+}
+
+#PbbaLogo:focus {
+	outline: none;
+}
+
+.footerLogo {
+	float: right;
+	margin-top: 1%;
+	width: 28%;
+	height: 31px;
+	font-size: 0px;
+}
+
+/* LOW RESOLUTION DESKTOP */
+@media screen and (max-device-height: 768px) {
+	.more-about-container {
+		padding-top: 15px;
+	}
+	.more-about-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		max-width: 800px;
+		max-height: 550px;
+		font-family: "Mark Office for MC" !important;
+		margin-top: 0%;
+		background: url('../images/more-about/more-about-artwork.png'),
+			url('../images/more-about/powered_by_mc-1.svg');
+		background-size: 45%, 210px 26px;
+		background-repeat: no-repeat;
+		background-position: 85% 48%, 98% 98%;
+		background-color: #fefefe;
+	}
+	.footerLogo {
+		float: right;
+		margin-left: 8%;
+		margin-top: 0px;
+		width: 30%;
+		height: 31px;
+		font-size: 0px;
+	}
+	.cfiLogo {
+	height: 30px;
+	margin-right: 3px;
+}
+.cfiLogosWrapper p {
+	    font-size: 1.5em;
+    margin-bottom: 0.5%;
+}
+.cfiLogosWrapper {
+	font-size: 0.85em;
+	margin-top: -2%;
+}
+}
+
+/* All mobiles */
+@media only screen and (min-device-width: 360px) and (min-device-height:
+	568px) and (orientation: portrait) {
+	[class*="desktop"] {
+		display: none;
+	}
+	[class*="mobile"] {
+		display: block;
+	}
+	.header {
+		width: 100%;
+	}
+	.pbbaLogoDiv {
+		width: 91%;
+	}
+	.pbbaLogo {
+		width: 54%;
+		margin-top: 3%;
+		margin-left: 7%;
+	}
+	.closeDiv {
+		margin-top: 3%;
+	}
+	.close img {
+		width: 50%;
+	}
+	.introduction {
+		width: 100%;
+	}
+	.mobileIntro {
+		text-align: -webkit-center;
+	}
+	.mobileIntro p {
+		width: 86%;
+		margin-top: 0%;
+		font-size: 1em;
+	}
+	.it-work-like-this-div {
+		margin: 6%;
+	}
+	.how-it-works {
+		width: 64%;
+		text-align: -webkit-left;
+		margin: auto;
+		float: none;
+		font-size: inherit;
+	}
+	.how-it-works .step {
+		margin: 5% 0 0;
+		height: auto;
+		width: 100%;
+	}
+	.step img {
+		width: 1.8em;
+	}
+	.step_right {
+		font-size: .75em;
+		padding-top: 1.1%;
+		margin-left: 18%;
+	}
+	.cfiLogosWrapper p {
+	    font-size: .9em;
+	}
+	/* 
+	.cfiLogo {
+		height: 25px;
+	} */
+	.step_left {
+		margin: auto;
+	}
+	.cfiLogo {
+		height: 25px;
+		margin: 0px 3px;
+	}
+	.footerLogo {
+		float: left;
+		margin-left: 8%;
+		width: 85%;
+		margin-top: 0px;
+		height: 32px;
+		font-size: 0px;
+	}
+}
+
+/* iPhone 5 & 5S in portrait & landscape */
+@media only screen and (max-device-width : 320px) and (orientation :
+	portrait) {
+	[class*="desktop"] {
+		display: none;
+	}
+	[class*="mobile"] {
+		display: block;
+	}
+	.header {
+		width: 100%;
+	}
+	.pbbaLogoDiv {
+		width: 85%;
+	}
+	.pbbaLogo {
+		width: 65%;
+		margin-top: 4%;
+		margin-left: 11%;
+	}
+	.closeDiv {
+		margin-top: 2%;
+	}
+	.close img {
+		width: 50%;
+	}
+	.introduction {
+		width: 100%;
+	}
+	.mobileIntro {
+		text-align: -webkit-center;
+		margin-top: 7%;
+	}
+	.mobileIntro p {
+		width: 91%;
+	}
+	.it-work-like-this-div {
+		margin: 6% 0 0%;
+	}
+	.how-it-works {
+		width: 75%;
+		text-align: -webkit-left;
+		margin: auto;
+		float: none;
+		font-size: inherit;
+	}
+	.how-it-works .step {
+		margin: 5% 0 0;
+		height: auto;
+		width: 100%;
+	}
+	.step img {
+		width: 1.8em;
+	}
+	.step_right {
+		font-size: .75em;
+		padding-top: 1.1%;
+		margin-left: 18%;
+		width: 87%;
+	}
+	.step_left {
+		margin: auto;
+	}
+	.cfiLogo {
+		height: 22px;
+		margin: -2px 1px;
+	}
+	.footerLogo {
+		float: left;
+		margin-left: 8%;
+		width: 85%;
+		margin-top: 0px;
+		height: 31px;
+		font-size: 0px;
+	}
+.cfiLogosWrapper p {
+    margin-bottom: 1%;
+    font-size: 1.1em;
+    margin-top: -2%;
+}
+.mobileIntro p {
+	font-size: 0.9em;
+}
+.it-work-like-this {
+    font-size: 0.9em;
+}
+}
+
+/* iPad portrait */
+@media only screen and (min-device-height: 1024px) and
+	(min-device-width: 768px) and (orientation: portrait) {
+	.close {
+		margin-top: 2%;
+	}
+	.close img {
+		width: 70%;
+	}
+	.mobileIntro p {
+		width: 80%;
+		font-size: 20px;
+	}
+	.it-work-like-this-div {
+		margin: 5% 0 0%;
+		font-size: 20px;
+	}
+	.how-it-works {
+		width: 64%;
+		text-align: -webkit-left;
+		margin: auto;
+		float: none;
+		font-size: 22px;
+	}
+	.cfiLogosWrapper p {
+		font-size: 18px;
+	}
+	.cfiLogo {
+		height: 35px;
+		margin: 0 5px;
+	}
+	.cfiLogos {
+    width: 90%;
+    margin: 0 auto;
+}
+}
+/**All mobiles – landscape mode **/
+@media only screen and (min-device-width:360px) and
+	(max-device-width:568px) and (orientation:landscape) {
+	[class*="desktop"] {
+		display: block;
+		font-size: 0.9em;
+		width: 103%;
+	}
+	#pbbaLogoFocus {
+		margin-top: -10px;
+	}
+	.pbbaLogo {
+		width: 60%;
+	}
+	.close img {
+		margin-top: 3px;
+		width: 60%;
+	}
+	.step img {
+		width: 1.5em;
+	}
+	.it-work-like-this {
+		font-size: 0.9em;
+	}
+	.step_right {
+		font-size: .57em;
+	}
+	.cfiLogo {
+		height: 23px;
+		width: auto;
+		margin-right: 1px;
+	}
+	.introduction {
+		margin-top: 0%;
+	}
+	.cfiLogoHeading {
+		margin-top: 0%;
+		margin-bottom: 1%;
+	}
+	
+	#useBankContent {
+		margin-top: 2%;
+		margin-bottom: 2%;
+		width: 88%;
+		font-size: 0.9em !important;
+	}
+	.how-it-works {
+		padding-top: 1%;
+		font-size: 1.1em;
+	}
+	.cfiLogosWrapper p {
+		font-size: 0.9em;
+		    margin-top: 0%;
+	}
+	.step_right {
+    font-size: .75em;
+}
+.how-it-works .step {
+    margin-bottom: 5% !important;
+}
+}
+
+/**	Iphone 5/5s – landscape mode **/
+@media only screen and (min-device-width: 280px) and (max-device-width: 568px) and (orientation:landscape)
+{
+[class*="desktop"] {
+	font-size: .85em;
+}
+
+.pbbaLogo {
+	width: 60%;
+}
+
+.close img {
+	margin-top: 3px;
+	width: 60%;
+}
+
+.it-work-like-this {
+	font-size: 0.8em;
+}
+
+.it-work-like-this-div {
+	margin-top: -1%;
+}
+
+.introduction {
+	width: 70%;
+	font-family: "Mark Office for MC" !important;
+	margin-top: 0%;
+}
+
+.cfiLogoHeading {
+		margin-top: 0%;
+		margin-bottom: 1%;
+	}
+.step_right {
+	font-size: .57em;
+}
+
+.step_left {
+	margin: 0% 0% 0 0;
+}
+
+.step img {
+	width: 1.1em;
+}
+
+.cfiLogosWrapper p {
+	font-size: .9em;
+	margin-top: 0%;
+}
+
+.cfiLogo {
+	height: 20px;
+	margin-right:1px;
+}
+
+.cfiLogosWrapper {
+	font-size: 0.75em;
+	margin-top: 0%;
+}
+
+#useBankContent {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	width: 95%;
+	 font-size: 0.5em;
+}
+
+.how-it-works {
+	padding-top: 1%;
+}
+.how-it-works .step {
+    margin-bottom: 3%;
+}
+}
+
+
+
+
+
+/** ipad - landscape mode **/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape) {
+	.pbba-content {
+		margin: auto;
+		padding: 1%;
+		border: 1px solid #888;
+		height: 445px;
+		width: 800px;
+		max-height: 100%;
+		max-width: 100%;
+		background-size: 44%, 11%;
+		background-repeat: no-repeat;
+		background-position: 91% 45%, 98% 98%;
+	}
+	#useBankContent {
+		width: 85%;
+	}
+	.pbbaLogo {
+		width: 70%;
+	}
+	.how-it-works {
+       padding-top: 1%;
+	}
+	.how-it-works .step {
+		margin-bottom: 6%;
+	}
+	.step_right {
+		font-size: 0.8em;
+	}
+	.step_right {
+		width: 95%;
+	}
+	.step img {
+		width: 2.2em;
+	}
+	.it-work-like-this {
+		font-size: 1.1em;
+	}
+	p {
+		font-size: 1.2em;
+	}
+	#useBankContent {
+    margin-top: 3%;
+    margin-bottom: 0%;
+    font-size: 1em;
+}
+	.it-work-like-this-div {
+		margin: 2% 0 1% 0;
+	}
+	.introduction {
+		margin-top: 0%;
+	}
+	.cfiLogosWrapper p {
+		font-size: 1.2em;
+	}
+	.cfiLogo {
+		height: 25px;
+	}
+	.step_left {
+    width: 11%;
+    float: left;
+    margin: 0% 6% 0 0;
+}
+/* Firefox specific css */
+@-moz-document url-prefix() {
+	
+.more-about-background{
+	background-size: 37%, 12%;
+	background-position: 85% 38%, 98% 98%;
+}
+}
+}
+
+@media	only screen and (min-device-width: 768px) and (max-device-width :
+	1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2.5),
+	only screen and (-o-min-device-pixel-ratio: 26/10),
+	only screen and (min-resolution: 252dpi) and (orientation : landscape)
+	{
+	.pbba-content {
+		width: 530px;
+		height: 270px;
+		max-width: 100%;
+		max-height: 100%;
+		
+	}
+	
+	.more-about-background {
+		background-position: 85% 42%, 98% 98%;
+		background-size: 37%, 16%;
+	}
+	.pbba-content-background {
+		background-size: 16%;
+		background-position: 98% 98%;
+	}
+	.close img {
+		margin-top: 3px;
+		width: 60%;
+	}
+		
+	[class*="desktop"] {
+		display: block;
+		font-size: 0.9em;
+		width: 103%;
+	}
+	.pbbaLogo {
+		width: 60%;
+	}
+	.close img {
+		margin-top: 3px;
+		width: 60%;
+	}
+	.step img {
+		width: 1.5em;
+	}
+	.it-work-like-this {
+		font-size: 0.9em;
+	}
+	.step_right {
+		font-size: .67em;
+	}
+	.how-it-works .step {
+    margin-bottom: 3%;
+}
+	.cfiLogo {
+		height: 20px;
+		width: auto;
+		margin-right: 1px;
+	}
+	.introduction {
+		margin-top: 0%;
+	}
+	.cfiLogoHeading {
+		margin-top: 0%;
+		margin-bottom: 1%;
+	}
+	.cfiLogosWrapper {
+		margin-top: 0%;
+	}
+	#useBankContent {
+		margin-top: 2%;
+		margin-bottom: 2%;
+		width: 88%;
+		font-size: 0.8em;
+	}
+	.how-it-works {
+		padding-top: 1%;
+		font-size: 1.1em;
+	}
+	.cfiLogosWrapper p {
+		font-size: 0.9em;
+		 margin-top: 0%;
+		 margin-bottom: 0;
+	}
+	
+}

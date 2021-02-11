@@ -1,0 +1,244 @@
+<!-- Copyright 2016 IPCO 2012 Limited
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="../js/extras.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/framework.css" />
+<link rel="stylesheet" type="text/css" href="../css/brn.css" />
+<link rel="stylesheet" type="text/css" href="../css/pbba.css" />
+<link rel="stylesheet" type="text/css" href="../css/mark-for-mc.css" />
+<link rel="stylesheet" type="text/css" href="../css/extras.css" />
+
+<title>BRN Pop-Up</title>
+
+</head>
+<body id="PBBAPopup">
+	<div id="brnContainer" class="pbba-container">
+		<div class="pbba-content pbba-content-background">
+		<span class="content-wrapper">
+			<div id="cover" class="hide"></div>
+			<div id="blanket" class="hide"></div>
+			<div id="wrapperDiv" >
+				<div class="confirmWindow " id="confirmWindow" >
+					<div id="confirmDiv" class="confirmDiv" tabindex="45">
+						<div class="content">
+									<span class="customHeadingH4" id="customHeadingH4" tabindex="46" aria-label="Have you already paid using your mobile banking app?">Have you already paid using your mobile banking app? </span>
+						
+						
+							<div>
+								<a class="confirmDivCloseBtn orangeButton positionRelative" aria-label="yes" id="yes" role="button" tabindex="47"   > 
+									<span class="confirmBtn" aria-hidden="true">Yes</span>
+								</a> 
+								<a class="confirmDivCancelBtn orangeButton positionRelative" aria-label="No"   id="no"   role="button" tabindex="48"  >
+									<span class="confirmBtn" aria-hidden="true">No</span>
+								</a>
+							</div>	
+							<div class="clrimg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header headerMob">
+				<div class="pbbaLogoDiv">
+ 					<div id="pbbaLogoFocus" tabindex="1" aria-label="Pay by bank app popup">Pay by bank app popup</div>
+ 					<div id="pbbaLogoFocus2" tabindex="1" aria-label="Pay by bank app popup">Pay by bank app popup</div>
+ 					<img src="../images/pbba-logo-black-horizontal_svg.svg" id="pbbaLogoId" class="pbbaLogo" role="img" tabindex="1" alt="Pay By Bank App" />
+					<span id="closeBRNContainer" class="close" tabindex="50"  role="button" title="close">
+						<img src="../images/brn-popup/close.svg" alt=""/>
+					</span>
+				</div>
+			</div>
+			<section class='brn-content-banks' id="brnPopUp">
+
+				<div class='custom-row desktop desktopCfi hide' id='list-of-banks'>
+					<div id="cfiLogosImgWrapper" class="cfiLogosWrapper desktop desktopCfiLogo">
+						<p tabindex="2" aria-label="Works with these banking apps" >Works with these banking apps:</p>
+						<div id="cfiLogos" class="cfiLogos" role="img" title="CFI logos" tabindex="3"></div>
+					</div>
+				</div>
+				<div class='custom-row Smdesktop smDesktopCfi hide' id='list-of-banks' >
+					<div class="cfiLogosWrapper Smdesktop SmdesktopCfiLogo smDesktopCfi">
+						<p tabindex="2" aria-label="Works with these banking apps" >Works with these banking apps:</p>
+						<div id="cfiLogosSmDesktop" role="img" class="cfiLogos" title="CFI logos" tabindex="3"></div>
+					</div>
+				</div>
+				<div class='custom-row' id='brn-images'>
+						<div id="step1Wrapper" class="step1Wrapper">
+							<div class='step1'  >
+							</div>
+						<br class="clear" />
+							<div class="step1TextDesktop" tabindex="5" aria-label=" Step 1 Log in  to your mobile banking app" >
+								<span class="fontSize0Px">Step 1</span><span>Log in </span> to your mobile banking app.
+							</div>	
+						
+							
+					</div>
+					
+					<div class="step1NotificationWrapper hide" id="step1NotificationPopup" >
+							<div class='step1Mobile' ></div>
+							<br class="clear" />
+							<div id="cfiShortNameText" class="step1TextDesktop" tabindex="5" aria-label=" Step 1 Open the notification from the banking app" >
+								<span class="fontSize0Px">Step 1</span><span>Open </span> the notification <br> from <span id="cfiShortName"> the banking app</span>
+							</div>
+						</div>
+						
+						<div class="step2Wrapper" id="step2Wrapper" >
+							<div class="step2" >
+							</div>
+					<br class="clear" />
+							<div class="step2TextDesktop" tabindex="7" aria-label=" Step 2 Find  the Pay by Bank app option">
+								<span class="fontSize0Px">Step 2</span><span>Find </span> the <strong>Pay by Bank app </strong>option.
+							</div>
+							<div class="hide" tabindex="7" aria-label=" Step 2 Log in and complete your purchase">
+								<span class="fontSize0Px">Step 2</span><span>Log in </span> and complete your purchase
+							</div>
+						</div>
+						
+						<div class="step2NotificationWrapper hide" id="step2NotificationPopup" >
+							<div class="step2Mobile" > </div>
+							<br class="clear"/>
+							<div class="step2TextDesktop" tabindex="7" aria-label="Step 2 Log in and complete your purchase.">
+								<span class="fontSize0Px">Step 2</span><span>Log in </span> and complete your purchase
+							</div>
+						</div>
+
+					<div class="step3Wrapper" id="step3WrapperBlock">
+					<div class="step3TextDesktop step3Caption mobile" id="step3CaptionMbl" tabindex="9" aria-label=" Step 3 Enter the above code for secure payment." >
+							<span class="fontSize0Px">Step 3</span><span>Enter</span> the above code for secure payment.
+					</div>
+					<div class="step3TextDesktop step3Caption desktop" id="step3CaptionDsk" tabindex="9" aria-label=" Step 3 Enter the above code for secure payment." >
+							<span class="fontSize0Px">Step 3</span><span>Enter</span> the above code for secure payment.
+					</div>
+					<div class='step3'  id="step3BrnPopup" aria-hidden="true">
+					</div>
+					<div class="step3-content" > 
+							<div id='brnCodeBlock' >
+								<div class="show" id="brnCode">
+										<div class="numberCircle" id="brn_1" tabindex="18"></div>
+										<div class="numberCircle" id="brn_2" tabindex="19"></div>
+										<div class="numberCircle marginRight9px" id="brn_3" tabindex="20"></div>
+										<div class="numberCircle" id="brn_4" tabindex="21"></div>
+										<div class="numberCircle" id="brn_5" tabindex="22"></div>
+										<div class="numberCircle" id="brn_6" tabindex="23"></div>
+										<span class='refresh-in' aria-label="Your code will refresh in" role="text" tabindex="24">Your code will refresh in <br/></span>
+									<span id="brntimer" class="brnTimer"  tabindex="25" role="number"></span>
+									 <span id="resetBrntimer"  class="brnTimer hide" tabindex="25" role="number"></span>
+										<span tabindex="26" class="seconds"  aria-label="seconds" role="text" >seconds</span>
+									</div>
+							</div>
+							<div id='brnExpire' class="brnErrorBlock">
+								<!-- show in case of BRN timeout -->
+								<img id="iconAttention1" src="../images/brn-popup/icon_attention_svg.svg" alt="Caution"/>
+								<img id="iconAttention4" class="desktop" src="../images/brn-popup/icon_attention_svg.svg"  role="img" alt="Caution">
+								<p id="brnExpired" class="brnErrorHeading" tabindex="28" role="text" aria-label="Request expired">Request expired</p>
+								<p class="brnErrorText" tabindex="29" role="text" aria-label="Tap on the button below to generate a new code">
+								Tap on the button below <br/>to generate	a new code.</p>
+
+								<button id="BrnExpiredTryAgainButton" class="tryAgainBtn brnExpired" tabindex="30" role="button" aria-label="Try
+									again">Try
+									again</button>
+							</div>
+
+							<div id='brnNotGenerated' class="brnErrorBlock" tabindex="27">
+								<!-- show in case of BRN not generated -->
+								<img id="iconAttention2" src="../images/brn-popup/icon_attention_svg.svg"  role="img" alt="Caution">
+								<img id="iconAttention3" class="desktop" src="../images/brn-popup/icon_attention_svg.svg"  role="img" alt="Caution">
+								<p class="brnErrorHeading2" tabindex="28" aria-label="There has been a problem" role="text">There has been a problem</p>
+								<p class="brnErrorText2" tabindex="29" aria-label="We were unable to generate a request
+									at this time. Tap on the button below to try again" role="text">We were unable to generate a request
+									at this time. Tap on the button below to try again.</p>
+
+								<button id="BrnErrorTryAgainButton" class="tryAgainBtn brnError" tabindex="30" title="Try Again" aria-label="Try again">
+									Try again</button>
+							</div>
+						</div>
+					<br class="clear" />
+						
+						</div>
+					
+					
+					<div class="step3NotificationWrapper hide" id="step3NotificationPopup">
+						<div class="step3NotificationBlock positionRelative">						
+							<div id='noNotification' class="notificationBlock" >
+								<p class="notificationHeading" id="notification" title="No notification?" role="text" tabindex="30">No notification?</p>
+								<p class="notificationText" tabindex="31" aria-label="Didn't receive a notification or want to pay on another device?" role="text" >Didn't receive a notification or <br>want to pay on another device?</p>
+
+								<button id="notificationGetCodeButton" class="notificationBtn notificationGetCode" role="button" tabindex="32">
+									<span>Get</span> 
+									<img src="../images/notification-popup/pbba_get_code.png" class='getCodeImage' alt=""> 
+									
+									<span class="getCodeText">code</span>
+								</button>
+							</div>
+						</div>
+					</div>
+										
+				</div>
+
+				<!-- bank logo mobile -->
+				<div id="mobileCfiLogo" class="cfiLogosWrapper mobile mobileCfiLogo clear">
+					<p class="wrkBank"  tabindex="34">Works with these banking apps:</p>
+					<div id="cfiLogos-mobile" class="cfiLogos"  role="img"  title="CFI logos" tabindex="35"></div>
+				</div>
+			</section>
+
+			<div id="intermediatePopUp" class="intermediatePopup-container">
+			<span class="containerLeft">
+				<div class="introduction" >
+					<p class="continueAnother continueAnotherWidth" tabindex="1" >
+					Continue with current device</p>
+					<p class="continueFirstContent" tabindex="2">
+					Tap the button below to open your <br /> mobile banking app and	log in<br /> to complete your request.
+					</p>
+
+				</div>
+				<div class="introduction">
+					<button id="openBankingAppButton" class="getCodeButton" href="#" tabindex="5">Open banking app</button><br>
+					<a href="javascript:void(0)" id="more-about" class="moreAboutSvg" role="link" tabindex="6" aria-label="More about Pay by Bank app"> &#9432; More about Pay by Bank app </a>
+					<hr class="horizentalLine">
+					
+				</div>
+				
+				</span>
+				<span class="vertical-line"></span> 
+				<span class="containerRight">
+				<div class="introduction">
+					<p class="continueAnother continueSecondTitle"  tabindex="7"  >Continue with another device</p>
+				</div>
+				<div class="introduction">
+					<p class="continueSecondContent" tabindex="8" >
+						Tap this button if you use another<br /> device for your mobile	banking app
+					</p>
+				</div>
+
+				<div class="introduction">
+					<button id="brnGetCodeButton" class="openBankApp" href="#" role="button" aira-lable="get code" tabindex="9">
+						<span>Get</span> <img src="../images/brn-popup/pbba_get_code.svg" role="img"
+							class='getCodeImage' > <span class="getCodeText">code</span>
+					</button>
+				</div>
+					</span>
+			</div>
+</span>
+	<span id="footer" class="footerLogo" tabindex="35" role="img" aria-label="powered by mastercard">powered by mastercard</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/pbba-popup.js"></script>
+	
+</body>
+</html>
