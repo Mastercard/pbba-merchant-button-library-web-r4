@@ -34,11 +34,10 @@ var merchantPollInterval = 5000; // Default merchant poll interval of 5 seconds 
 var cfiLogosURL= "https://paybybankappcdn.mastercard.co.uk/static/ml/pbba-3550ce7763041531b9214e9e23986b37/merchant-lib/banks.json"; // CDN location to fetch the CFI logos
 
 
-/* Initialize PayConnect. */
+/* Initialise PayConnect. */
 
 window.onload = function() {
-	setupPayConnect(cookieManagementUrl, document); 
-	
+	initCookieMgmt(cookieManagementUrl, document); 	
 }
 
 /* Override the pay() and notify() functions.  */

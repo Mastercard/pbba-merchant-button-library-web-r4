@@ -37,9 +37,9 @@ zapppopup.load(zappVersion, {
 	cfiLogosURL: cfiLogosURL
 } );
 
-/* Initialise PayConnect */
+/* Initialise Cookie Management functionality */
 window.onload = function() {
-	setupPayConnect(cookieManagementUrl, document); 
+	initCookieMgmt(cookieManagementUrl, document); 
 }
 
 /* Functions to format and return the timezone offset */

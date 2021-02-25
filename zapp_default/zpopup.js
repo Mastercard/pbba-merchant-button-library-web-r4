@@ -242,7 +242,7 @@ function readPBBACookies() {
 
 	
 
-function setupPayConnect(url, document) {
+function initCookieMgmt(url, document) {
 	if (!isCookieEnabled()) {
 		return;
 	}

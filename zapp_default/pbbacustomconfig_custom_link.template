@@ -33,13 +33,14 @@ var clickedButton = null; // This variable holds the reference to the custom but
 
 /* Initialise the custom button engine and set the CDN location to fetch the CFI logos from */
 zapppopup.load(zappVersion, {
+	cookieManagementUrl: cookieManagementUrl,
 	cfiLogosURL: cfiLogosURL
 } );
 
-/* Initialize PayConnect and cookie management functionality. */
+/* Initialise Cookie Management functionality. */
 
 window.onload = function() {
-	setupPayConnect(cookieManagementUrl, document); 
+	initCookieMgmt(cookieManagementUrl, document); 
 }
 
 /* Define the event listeners for the custom merchant button*/

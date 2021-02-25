@@ -263,7 +263,7 @@ function readPBBACookies() {
 	refreshPcidIframe(cookieManagementURL);
 }
 
-function setupPayConnect(url, document) {
+function initCookieMgmt(url, document) {
 	if (!isCookieEnabled()) {
 		return;
 	}

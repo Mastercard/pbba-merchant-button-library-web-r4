@@ -41,7 +41,7 @@ limitations under the License.
 			zapppopup,
 			{
 
-				_setupPayConnect : function() {
+				_initCookieMgmt : function() {
 				},
 				isMobile1 : function() {
 					return zapppopup.platformSupportsZapp();
@@ -484,13 +484,6 @@ limitations under the License.
 						url = "zapp://" + this.secureToken;
 					}
 					
-					/*if (typeof zapppopup.requestType != "undefined" && zapppopup.requestType == "link") {
-		            	url = "zapp-r4://"+ this.secureToken +"?apiName=RequestToLink";
-		            }
-					else {
-						url = "zapp://" + this.secureToken;
-					}*/
-
 					var isInstalledCallback = function(isInstalled) {
 
 						var isiOS = navigator.userAgent
@@ -525,7 +518,7 @@ limitations under the License.
 						document.body.appendChild(a);
 						a.click();
 
-					} else// if (navigator.userAgent.match(/iPhone|iPad|iPod/))
+					} else
 					{
 						// IOS
 						setTimeout(function() {
@@ -558,13 +551,6 @@ limitations under the License.
 					} else  {
 						url = "zapp://" + this.secureToken;
 					}
-
-					/*if (typeof zapppopup.requestType != "undefined" && zapppopup.requestType == "link") {
-		            	url = "zapp-r4://"+ this.secureToken +"?apiName=RequestToLink";
-		            } 
-					else {
-						url = "zapp://" + this.secureToken;
-					}*/
 
 					var isInstalledCallback = function(isInstalled) {
 
@@ -599,7 +585,7 @@ limitations under the License.
 						document.body.appendChild(a);
 						a.click();
 
-					} else// if (navigator.userAgent.match(/iPhone|iPad|iPod/))
+					} else
 					{
 						// IOS
 						setTimeout(function() {
