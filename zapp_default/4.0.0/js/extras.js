@@ -16,6 +16,7 @@ limitations under the License.
 
 window.zapp = window.zapp || {};
 window.zapppopup = window.zapppopup || {};
+var isScriptLoaded = true;
 var cfiLogosShort = [];
 var cfiLogosShuffled = [];
 var cfiLogosLong = [];
@@ -276,7 +277,6 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 	zapppopup.redirectToCookieManagementUrl = function(url) {
 
 		var xmlhttp = new XMLHttpRequest();
-
 		if (xmlhttp.withCredentials === undefined) {
 			xmlhttp = new XDomainRequest();
 		}

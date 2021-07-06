@@ -109,10 +109,15 @@ limitations under the License.
 
 					var self = this;
 					var loadInterval = self._isIE() ? 300 : 50;
-
-					zapp.addJsFile(this.libUrl + "/js/extras.js");
-					zapp.addJsFile(this.libUrl + "/js/zapp-popup.js");
-					zapp.addJsFile(this.libUrl + "/js/cookie-management.js");
+					var thisLibUrl = this.libUrl;
+					zapp.addJsFile(thisLibUrl + "/js/extras.js");
+					var loadScripts = setInterval(function(){ 
+						if(window.isScriptLoaded){
+							zapp.addJsFile(thisLibUrl + "/js/zapp-popup.js");
+							zapp.addJsFile(thisLibUrl + "/js/cookie-management.js");
+						clearInterval(loadScripts);
+						}
+					},1000); 
 
 					self
 							.registerEventHandler(

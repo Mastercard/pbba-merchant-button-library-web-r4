@@ -256,7 +256,7 @@ function initCookieMgmt(url, document) {
 function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 	
 		var xmlhttp = new XMLHttpRequest();
-		
+		var refURL = window.location.href;
 		if (xmlhttp.withCredentials === undefined) {
 			xmlhttp = new XDomainRequest();
 		}
@@ -266,7 +266,7 @@ function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 	           if (xmlhttp.status == 200) {
 	        	   console.log(url + " is reachable.");
 	        	   setTimeout(function(){
-	           			window.location.href = url +  "index.html?pcid="+pcid+"&cookieExpiryDays="+cookieExpiryDays;
+	           			window.location.href = url +  "index.html?pcid="+pcid+"&cookieExpiryDays="+cookieExpiryDays+"&refURL="+refURL;
 	           		}, 10);
 	           		deleteCookie(TP_COOKIE_DISABLED_COOKIE);     
 	           } else {
