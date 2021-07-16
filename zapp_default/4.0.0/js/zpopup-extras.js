@@ -228,7 +228,6 @@ var logoData;
 	zapppopup.redirectToCookieManagementUrl = function(url) {
 
 		var xmlhttp = new XMLHttpRequest();
-
 		if (xmlhttp.withCredentials === undefined) {
 			xmlhttp = new XDomainRequest();
 		}
@@ -239,7 +238,7 @@ var logoData;
 					console.log(url + " is reachable.");
 					setTimeout(function() {
 						window.location.href = url
-								+ "index.html";
+						+ "index.html";
 					}, 10);
 					zapppopup.deleteCookie(TP_COOKIE_DISABLED_COOKIE);
 				}
