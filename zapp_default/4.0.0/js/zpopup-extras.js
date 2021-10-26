@@ -273,13 +273,10 @@ var logoData;
 	};
 
 	zapppopup.setAppCookie = function(cookieManagementUrl) {
-		if (zapppopup.isTPCookieDisabled()) {
-			zapppopup.redirectToCookieManagementUrl(cookieManagementUrl);
-			setTimeout(function() {
-				zapppopup.setHasAppCookie(cookieManagementUrl);
-			}, 1000);
-		} else {
+		if (!zapppopup.isTPCookieDisabled()) {
 			zapppopup.setHasAppCookie(cookieManagementUrl);
+		} else {
+			return;
 		}
 
 	};
