@@ -82,46 +82,9 @@ function zAddEventListener(type, listener)
     zapppopup.register = "registered"
     
     	zapppopup.versions = {
-        "1.0.0": {
-            path: "1.0.0",
-            file: "zapp-popup.js"
-        },
-        "1.1.0": {
-            path: "1.1.0",
-            file: "zapp-popup.js"
-        },
-        //adding new version
-        "1.2.0": {
-            path: "1.2.0",
-            file: "zapp-popup.js"
-        },
-        "2.0.0": {
-            path: "2.0.0",
-            file: "zapp-popup.js"
-        },
-        "2.0.7": {
-            path: "2.0.7",
-            file: "zapp-popup.js"
-        },
-        "3.0.0": {
-            path: "3.0.0",
-            file: "zapp-popup.js"
-        },
-        "3.0.1": {
-            path: "3.0.1",
-            file: "zapp-popup.js"
-        },
-        "3.1.0": {
-            path: "3.1.0",
-            file: "zapp-popup.js"
-        },
-        "3.1.1": {
-            path: "3.1.1",
-            file: "zapp-popup.js"
-        },
-        "4.0.0": {
-            path: "4.0.0",
-            file: "zapp-popup.js"
+        "4.0.1": {
+            path: "4.0.1",
+            file: "button.js"
         }
     };
 

@@ -82,45 +82,8 @@ function zAddEventListener(type, listener)
     zapp.register = "registered"
     
     zapp.versions = {
-        "1.0.0": {
-            path: "1.0.0",
-            file: "button.js"
-        },
-        "1.1.0": {
-            path: "1.1.0",
-            file: "button.js"
-        },
-        // adding new version
-        "1.2.0": {
-            path: "1.2.0",
-            file: "button.js"
-        },
-        "2.0.0": {
-            path: "2.0.0",
-            file: "button.js"
-        },
-        "2.0.7": {
-            path: "2.0.7",
-            file: "button.js"
-        },
-        "3.0.0": {
-            path: "3.0.0",
-            file: "button.js"
-        },
-        "3.0.1": {
-            path: "3.0.1",
-            file: "button.js"
-        },
-        "3.1.0": {
-            path: "3.1.0",
-            file: "button.js"
-        },
-        "3.1.1": {
-            path: "3.1.1",
-            file: "button.js"
-        },
-        "4.0.0": {
-            path: "4.0.0",
+        "4.0.1": {
+            path: "4.0.1",
             file: "button.js"
         }
     };
