@@ -84,7 +84,7 @@ function zAddEventListener(type, listener)
     	zapppopup.versions = {
         "4.0.1": {
             path: "4.0.1",
-            file: "button.js"
+            file: "zapp-popup.js"
         }
     };
 
