@@ -1,0 +1,105 @@
+/**  Copyright (c) 2020 Mastercard
+ 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+    http://www.apache.org/licenses/LICENSE-2.0
+ 
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ 
+*/
+
+/* Common styling */
+
+.bankLogoDiv {
+	width: 25px;
+	display:inline-block; 
+	vertical-align: middle;
+}
+
+.bankNameDiv {
+	display:inline-block;
+	margin-left: 15px;
+}
+
+.arrowDiv {
+    float: right;
+    vertical-align: middle;
+    line-height: 33px;
+}
+
+.upArrowDiv, .downArrowDiv {
+	display: none;
+    vertical-align: middle;
+	display: none;
+	opacity: 1;
+}
+
+.bankAppImg {
+	height: 25px;
+	border-radius: 5px;
+}
+
+.arrowImg, .upArrowImg, .downArrowImg {
+	height: 18px;
+	image-orientation: none;
+}
+
+.oList {
+	overflow: scroll;
+	list-style-type: none;
+	height: 60%;
+	padding-inline-start: 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	scroll-behavior: smooth;
+}
+
+.bankApp {
+	padding: 1vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	background: #F1EFEB;
+	height: 25px;
+	text-align: left;
+	border-radius: 10px;	
+}
+
+/* iPhone portrait */
+@media only screen and (min-device-width: 360px) and (min-device-height:
+	568px) and (orientation: portrait) {
+	.bankApp {
+		width: 250px;
+	}
+}
+
+/* iPad portrait */
+@media only screen and (min-device-height: 1024px) and
+	(min-device-width: 768px) and (orientation: portrait) {	
+	.bankApp {
+		width: 350px;
+	}
+
+	.oList {
+		height: 65%;
+	}
+}
+
+/* iPhone and iPad landscape */
+@media only screen and (orientation: landscape) {	
+	.bankApp {
+		margin-left: 0px;
+		width: 300px;
+	}
+
+	.upArrowDiv, .downArrowDiv {
+		text-align: center;
+		width: 300px;
+	}
+}
