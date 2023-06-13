@@ -28,10 +28,11 @@ limitations under the License.
 
 /* Define the PBBA variables */
 
-var zappVersion = "4.0.1"; // Current web merchant button library version.
+var zappVersion = "5.0.0"; // Current web merchant button library version.
 var cookieManagementUrl = "https://paybybankappcookie.mastercard.co.uk/static/cookie-management/pbba-3550ce7763041531b9214e9e23986b37/" // Cookie management URL for PayConnect.
 var merchantPollInterval = 5000; // Default merchant poll interval of 5 seconds to poll the merchant server for payment notification.
 var cfiLogosURL= "https://paybybankappcdn.mastercard.co.uk/static/ml/pbba-3550ce7763041531b9214e9e23986b37/merchant-lib/banks.json"; // CDN location to fetch the CFI logos
+var appManifestURL = "https://cdn.paybybankapp.co.uk/static/mf/pbba-3550ce7763041531b9214e9e23986b37/pbba-app-picker-manifest"; // CDN location for the app picker manifest
 
 
 /* Initialise PayConnect. */
@@ -253,5 +254,6 @@ zapp.load(zappVersion, {
 	},
 	cookieManagementUrl: cookieManagementUrl,
 	merchantPollInterval: merchantPollInterval,
-	cfiLogosURL: cfiLogosURL
+	cfiLogosURL: cfiLogosURL,
+	appManifestURL: appManifestURL
 });
