@@ -85,6 +85,10 @@ function zAddEventListener(type, listener)
         "4.0.1": {
             path: "4.0.1",
             file: "zapp-popup.js"
+        },
+        "5.0.0": {
+            path: "5.0.0",
+            file: "zapp-popup.js"
         }
     };
 
@@ -268,7 +272,7 @@ function listener(event){
 	}
 	
 	if (event.data.indexOf(HAS_APP_COOKIE) == 0) {
-		if (typeof event.data.split('=')[1] != "undefined") {
+		if (event.data.split('=')[1] != "undefined") {
 			document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
 		} else {
 			deleteCookie("hasApp");

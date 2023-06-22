@@ -14,244 +14,423 @@ limitations under the License.
  
 */
 
-/* 
- * This configuration file is used to define and override variables and functions for the Pay By Bank App Branded or Custom Web Merchant Button.
+/*
+ * This is a sample configuration file to be used as a reference for
+ * implementing:
  * 
- * As a default implementation, this file contains the Branded Web Merchant Button implementation.
- * 
- * If you want to implement the custom web merchant button, then copy the contents of pbbacustomconfig_custom.template into this file.
- * 
- * If you want to implement the branded web merchant button, then copy the contents of pbbacustomconfig_branded.template into this file.
+ * 1. Native Pay By Bank App Button 2. Custom Merchant Button calling the PBBA
+ * popup.
  * 
  */
 
+/*
+ * START USER DEFINED VARIABLES
+ * 
+ * Change the values of these variables appropriately
+ * 
+ */
 
-/* Define the PBBA variables */
+/* START optional variables. Only for this demo */
+window.zapppopup = window.zapppopup || {};
 
-var zappVersion = "4.0.1"; // Current web merchant button library version.
-var cookieManagementUrl = "https://paybybankappcookie.mastercard.co.uk/static/cookie-management/pbba-3550ce7763041531b9214e9e23986b37/" // Cookie management URL for PayConnect.
-var merchantPollInterval = 5000; // Default merchant poll interval of 5 seconds to poll the merchant server for payment notification.
-var cfiLogosURL= "https://paybybankappcdn.mastercard.co.uk/static/ml/pbba-3550ce7763041531b9214e9e23986b37/merchant-lib/banks.json"; // CDN location to fetch the CFI logos
+jQuery.support.cors = true;
+if (!window.console)
+	console = {
+		log : function() {
+		}
+	};
+
+var notifyXhr = null; // This variables holds a reference to the notify AJAX
+// call. This value will never change.
+var distUrlVersion = localStorage.getItem('gatewayVersion') || "${dist.gateway.context}"; // This is the distributor URL version. Update
+//this to the latest gateway version when
+//needed.
+var distGateway = localStorage.getItem('gatewayUrl') || "${dist.gateway.url}";
+
+var distGatewayUrl =  distGateway + distUrlVersion + "/" ; // This is the distributor
 
 
-/* Initialise PayConnect. */
+// gateway URL.
+var rtpContext = "4/transaction"; // This is context for posting transactions
+// to the distributor gateway.
+var notifyContext = "4/transaction"; // This is the context for getting
+// notifications from the distributor
+// gateway.
+var cfiLogosURL = localStorage.getItem('cdnUrl') || "${cfi.logo.cdn}";
+var appManifestURL = "${app.manifest.url}";
+/* END optional variables. Only for this demo */
 
-window.onload = function() {
-	initCookieMgmt(cookieManagementUrl, document); 	
+/* START mandatory variables. Only for this demo */
+
+var zappVersion = "${lib.version}"; // This is the current web merchant button library
+// version. Update when new library is available.
+var cookieManagementUrl = "${cookie.management.url}"; //"https://paybybankappcookie.mastercard.co.uk/static/cookie-management/pbba-3550ce7763041531b9214e9e23986b37/"; // This is the URL for the cookie management
+// script. This URL will almost never
+// change.
+var merchantPollInterval = 10000;
+/* END mandatory variables. Only for this demo */
+var clickedButton = null;
+var abort = false;
+var linkingType = "AOF";
+var apiName;
+var secureTokenForCustomNotify = null;
+var libCallback = null;
+
+if(!localStorage.getItem('env') || localStorage.getItem('env') == '' || localStorage.getItem('env') == null) {
+	console.log('Initially setting env if not');
+	localStorage.setItem('env', 'demo');
+	localStorage.setItem('gatewayVersion', 'distributor-gateway-r4_demo');
+	localStorage.setItem('gatewayUrl', '${dist.gateway.url}');
+	localStorage.setItem('cdnUrl', '${cfi.logo.cdn}');
 }
 
-/* Override the pay() and notify() functions.  */
+var getEnv = (localStorage.getItem('env') != null) ? localStorage.getItem('env') : 'demo';
 
-zapp.load(zappVersion, {
-	pay : function(data, callback) {
+/* Enable this if the web page contains just the custom merchant pay button. */
+// Initialise Cookie Management functionality.
+window.onload = function() {
+	initCookieMgmt(cookieManagementUrl, document);
+}
 
-		/* 
-		 * The only data that is required to be posted to the merchant server from the PBBA Web Merchant Button is the pcid.
-		 * merchantRequestToPayPostData is the merchant's request to pay object that is posted to the merchant's server.
-		 * 
-		 */
-		
-		/*
-		 *  The below merchantRequestToPayPostData is a JSON object defined by merchant to hold the checkout information 
-		 *  and other things, in addition to all of merchants data element, they have to include the payConnectID element 
-         *  to this object, a sample declaration is given below.
-         *  
-		 *  var merchantRequestToPayPostData  = {
-		 *		payConnectID: null;
-		 *  };
-		*/
-		
-		if (typeof data.pcid !== "undefined")
-			merchantRequestToPayPostData.payConnectID = data.pcid; //Merchant specific JSON object merchantRequestToPayPostData.payConnectID
+/*
+ * START BRANDED WEB MERCHANT BUTTON LIBRAY IMPLEMENTATION.
+ */
 
-		/* 
-		 *	1.	Post the data to the merchant server.
-		 *
-		 *	2.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the merchant server:
-		 * 		
-		 *		A.	Create a response object by populating the following mandatory PBBA attributes:
-		 *
-		 *		NOTE: merchantRequestToPayResponseObject is assumed here to be the merchant's variable name of the JSON response object for the request to pay from the merchant server
-		 */
-		
-		 			var response = new zapppopup.response.payment({
-						success : true, // Leave it as is
-						secureToken : merchantRequestToPayResponseObject.secureToken,
-						brn : merchantRequestToPayResponseObject.pbbaCode,
-						retrievalExpiryInterval : merchantRequestToPayResponseObject.retrievalTimeOutPeriod,
-						confirmationExpiryInterval : merchantRequestToPayResponseObject.confirmationTimeoutPeriod,
-						notificationSent: merchantRequestToPayResponseObject.cookieSentStatus,
-						pcid: null, // Leave it as is
-						cfiShortName: merchantRequestToPayResponseObject.bankName,
-						requestType: "RequestToPay", // Leave it as it is
-					});
-		     		
-		     		
-		/*
-		 * 		B.	Make a callback passing in the response object created in Step A above:
-		 */
-		     		
-		 			callback(response);
-		 			
-		/*
-		 *	3.	ERROR - Upon receipt of an error from the merchant server:
-		 *		
-		 *		A.	Create a new response object by populating the following fields:
-		 *
-		 */
-		 			
-		 			var response = new zapppopup.response.payment({
-						success : false, // Leave it as is
-						data : MerchantErrorJSONObject // MerchantErrorJSONObject is assumed to be merchant naming for their error object
-					});
-		
-		/*
-		 *		B.	Make a callback passing in the response object created in Step A above:
-		 */
-		 			
-		 			callback(response);
-		 		
-	},
-	notify : function(secureToken, callback) {
+function linkPayMitSelection() {
+	linkingType = document.getElementById("linkPayMitDropdown").value;
+}
 
-		/*  NOTE: If jQuery.ajax is used for polling the merchant server and the method is GET then Zapp suggests doing the following to prevent caching:
-		 * 
-		 *  Step 1: Add the following property to AJAX call:
-		 *  		cache: false
-		 *  
-		 *  Step 2: Add a cache busting parameter to the polling URL. This parameter can be any random number (for example, date timestamp) 
-		 *  		appended to the polling URL. For example, if the polling URL is "/responseForPayment.aspx?secureToken=12345678&orderId=12345" then
-		 *  		the URL with a cache busting parameter called time would be:  
-		 *  		"/responseForPayment.aspx?secureToken=12345678&orderId=12345&time="+Date.now()
-		 *  
-		 */
-		
-		
-		/*	1. 	This method polls the merchant server for a response every X seconds.
-		 * 	  	X is the value for merchantPollInterval.
-		 *
-		 *	2.	secureToken must be passed to the merchant server to enable polling the zapp server for a 
-		 *		payment notification.
-		 *
-		 *	3.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the merchant server:
-		 *
-		 *		A.	Create a new response object by populating the following fields:
-		 *
-		 */
-		
-					var response = new zapppopup.response.notify({
-						success : true
-					});
-		
-		/*
-		 *		B.	Make a callback passing in the response object created in Step A above:
-		 *
-		 */
-					
-					callback(response);
-					
-		 
-		/*		C.	Check if the pcid is present in the response from the merchant server. If present then
-		 *			set the pcid cookie by calling the setCookie function:
-		 *
-		 *		NOTE: merchantGetPaymentStatusObject is the payment notification object returned from the merchant server
-		 */
-					
-		 			setCookie("pcid", merchantGetPaymentStatusObject.payConnectID, merchantGetPaymentStatusObject.cookieExpiryDays, cookieManagementUrl);
-		 			
-		/*
-		 *		D. Continue further order processing.
-		 *
-		 *	4.	IN PROGRESS - Upon receipt of an IN PROGRESS status from the distributor server:
-		 *		
-		 *		A.	Create a new response object by populating the following fields:
-		 *
-		 */
-		 			var response = new zapppopup.response.notify({
-						success : false
-					});
-		 			
-		/*
-		 *		B.	Make a callback passing in the response object created in Step A above:
-		 *
-		 */
-		 			
-		 			callback(response);
-		 			
-		/*
-		 *	5.  ERROR - Upon receipt of an error from the merchant server:
-		 *		
-		 *		A.	Create a new response object by populating the following fields:
-		 *
-		 */
-		 			
-		 			var response = new zapppopup.response.notify({
-						success : false
-					});
-		 			
-		/*		B.	Make a callback passing in the response object created in Step A above:
-		 *
-		 */
-		 			
-		 			callback(response);
-		 			
-		/*
-		 *		C.   Merchant implements their own Error Handling process
-		 *
-		 */
-		 			
-		 /* Example of a jQuery AJAX polling mechanism using method GET with caching set to false and a cache buster (time) in the URL.
-		  * 
-		  */ 
-		  			
-		  			jQuery.ajax({
-							url : merchantPollingUrl, // Merchant URL to poll for the payment notification. Modify appropriately.
-							dataType : "json", // If merchant expects a JSON object to be returned from the polled server. Modify appropriately.
-							crossDomain : true, // If merchant requires cross domain polling. Modify appropriately.
-							cache: false, // Disables caching in IE
-							type : "GET", // In case the polling method is GET. Modify appropriately.
-							contentType : "application/json; charset=UTF-8", // The content type to be posted to the polling server. Modify appropriately.
-							success : function(merchantGetPaymentStatusObject) { // merchantGetPaymentStatusObject is the merchant's response object from the polled server
-										
-										var response = null;
-										
-										// Check for the response status from the polled server. If the status is in progress the continue polling using the following:
-										
-										response = new zapppopup.response.notify({success: false}); // Continue polling
-										
-										// Check for the response status from the polled server. If the status is success (indicating an authorised or a declined transaction) then do the following:
-										
-										response = new zapppopup.response.notify({success: true}); // Stop polling
-										
-										// If the PayConnect cookie is present in the response from the merchant server, then call the setCookie() function to
-										// setup the PayConnect option.
-										if (typeof merchantGetPaymentStatusObject.payConnectID != "undefined" ) {
-											setCookie("pcid", merchantGetPaymentStatusObject.payConnectID, 
-													merchantGetPaymentStatusObject.cookieExpiryDays, 
-													cookieManagementUrl); 	// Set up PayConnect cookie, 
-																			// merchantGetPaymentStatusObject.payConnectID being the payConnectId within the Merchant Response Object
-										}
-										
-										callback(response); // Leave it as is
-										
-										// Continue further merchant specific processing. Example - showing the order success or cancel page.
-							},
-							error : function(merchantGetPaymentStatusObject) {
-								// Error handling
-								var response = new zapppopup.response.notify({success : false}); // Stop polling
-								callback(response);
+function changeEnableLinkAndPay() {
+	var val = document.getElementById('enableLinkAndPay').checked;
+	if(val === false) {
+		document.getElementById("linkPayMitDropdown").selectedIndex = 0;
+		linkingType = "AOF";
+	}
+}
+
+zapp
+		.load(
+				zappVersion,
+				{
+					pay : function(data, callback) {
+
+						var _data = data;
+						var merchantLinkingFlag = document.getElementById('enableLinkAndPay').checked ? 1 : 0;
+						
+						var postData = {
+							productId : data.productId,
+							linkingType : linkingType,
+							merchantLinkingFlag : merchantLinkingFlag,
+							merchantCallbackUrl : "${merchant.callback.url}/${project.name}/resources/html/action.html?action=redirect",
+							browserInfo : JSON.stringify(data.browserInfo),
+							gatewayUrl : distGatewayUrl + rtpContext
+						};
+						console.log(JSON.stringify(postData));
+
+						if (typeof data.pcid !== "undefined" && !merchantLinkingFlag){
+							if(getEnv !== null && (getEnv == 'sprint' || getEnv == 'dev')) {
+								postData.pcid = null;
+							}else {
+								postData.pcid = data.pcid;	
 							}
-					});
-					
-		 /* 
-		  * 
-		  */
+							apiName = "RequestToPay";
+						} else {
+							postData.pcid = null;
+							apiName = "RequestToLinkAndPay";
+						}		
 
-	},
-	error : function(errors) {
-		/* Place any other error handling logic here */
-	},
-	cookieManagementUrl: cookieManagementUrl,
-	merchantPollInterval: merchantPollInterval,
-	cfiLogosURL: cfiLogosURL
-});
+						//Clear brn timer and transaction timer before create new request
+						zapppopup._stopTimers();
+						jQuery
+								.ajax({
+									url : "/${project.name}/postOrder",
+
+									type : "POST",
+									crossDomain : true,
+									data : postData,
+									headers : {
+										"accept" : "application/json; charset=UTF-8"
+									},
+									success : function(res) {
+										secureTokenForCustomNotify = res.secureToken;
+										libCallback = callback;
+
+										var response = new zapppopup.response.payment(
+												{
+													success : true,
+													secureToken : res.secureToken,
+													aptid : res.aptId,
+													brn : res.brn,
+													amount : data.amount,
+													retrievalExpiryInterval : res.retrievalExpiryInterval,
+													confirmationExpiryInterval : res.confirmationExpiryInterval,
+													notificationSent : res.notificationSent,
+													pcid : null,
+													cfiShortName : res.cfiShortName,
+													requestType: apiName,
+												});
+
+										callback(response);
+									},
+									error : function(res) {
+										callback(new zapppopup.response.payment(
+												{
+													success : false,
+													data : res
+												}));
+									}
+								});
+					},
+					notify : function(secureToken, callback) {
+
+						if(getEnv !== null && getEnv == 'demo') {
+
+						console.log("notify", secureToken);
+
+						var _callback = callback;
+
+						var _confirmOrder = function(data) {
+							var param = '';
+							var _orderData = data;
+							_orderData.pollingUrl = distGatewayUrl
+									+ notifyContext;
+							_orderData.secureToken = secureToken;
+							_orderData.env = getEnv;
+							
+							if(data.ocrDesc == 'Immediate' && data.txnStatus == '0') {
+								param = 'success';
+								localStorage.setItem('rtpTxnStatus', 'success');
+							}else {
+								param = 'decline';
+								localStorage.setItem('rtpTxnStatus', 'failure');
+							}
+							_orderData.txnParam = param;
+
+							jQuery.ajax({
+								type : 'post',
+								url : "/${project.name}/order/success",
+								crossDomain : true,
+								data : {
+									jsonArray : JSON.stringify(_orderData)
+								},
+								success : function(res) {
+									res = JSON.parse(res);
+									if(typeof(res.merchantLinkedFlag) == "undefined"){
+										if (typeof res.pcid !== "undefined") {
+											setCookie("pcid", res.pcid,
+													res.cookieExpiryDays,
+													cookieManagementUrl);
+										}
+									}
+
+									if (res.status === 'success') {
+										console.log(res);
+										setTimeout(function() {
+											window.location = "/${project.name}/"
+													+ res.html;
+										}, 3000);
+
+									} else {
+										setTimeout(function() {
+											window.location = "/${project.name}/"
+													+ res.html;
+										}, 3000);
+									}
+								}
+							});
+						};
+
+						var nothing = null;
+
+						jQuery
+								.ajax({
+									url : distGatewayUrl + notifyContext + "/"
+											+ secureToken,
+									dataType : "json",
+									crossDomain : true,
+									cache : false,
+									contentType : "application/json; charset=UTF-8",
+									type : "GET",
+									success : function(data) {
+
+										console.log("Notify Res", data);
+
+										if (typeof data.errorCode === "undefined") {
+
+											data.success = true;
+
+											if (typeof data.guid !== "undefined") {
+												data.pcid = data.pcid;
+											}
+
+											var response = new zapppopup.response.notify(
+													{
+														success : true
+													});
+											_callback(response);
+
+											_confirmOrder(data);
+
+										}
+									},
+									error : function(data) {
+										console.log('error');
+										var response = new zapppopup.response.notify(
+												{
+													success : false,
+													data : data
+												});
+										_callback(response);
+									}
+								});
+						}
+					},
+					error : function(errors) {
+						console.log(errors);
+						alert(errors);
+					},
+					cookieManagementUrl : cookieManagementUrl,
+					merchantPollInterval : merchantPollInterval,
+					cfiLogosURL : cfiLogosURL,
+					appManifestURL: appManifestURL
+				});
+
+/*
+ * END BRANDED WEB MERCHANT BUTTON LIBRAY IMPLEMENTATION.
+ */
+function listener(event) {
+	try {
+	var data = JSON.parse(event.data);
+	} catch (exception) {
+		return;
+	}
+
+	//Based on gateway selection 'sprint' we need to enable this,
+	//manual acknowledge of notify of payment accepted or declined
+	if(getEnv !== null && (getEnv == 'sprint' || getEnv == 'dev')  && data.eventType == "pbba.popup.notify.close") {
+		abort = true;	
+		parent.closeBRNPopup();	
+		zapppopup._stopTimers();	
+		zapppopup._removePopup(true);
+		document.getElementById('notifyWrapper').style.display = "block";
+		document.getElementById("successNotifyBtn").addEventListener("click", e=>acceptedPaymentClick(e,'success')); 
+		document.getElementById("failureNotifyBtn").addEventListener("click", e=>acceptedPaymentClick(e,'decline'));
+		document.getElementById('notifyDropdown').addEventListener("change", e=> notifyDropdownChange(e));
+		document.getElementById("closeCustomNotify").addEventListener("click",function(event){
+			window.location.reload();
+			document.getElementById('notifyWrapper').style.display = "none";
+		});
+	}
+}
+
+if (window.zAddEventListener) {
+	addEventListener("message", listener, false)
+} else {
+	attachEvent("onmessage", listener)
+}
+
+
+function notifyDropdownChange(e) {
+	if(e.target.value === "MCOMM") {
+		document.getElementById("failureNotifyBtn").classList.add("hide")
+		document.getElementById("successNotifyBtn").classList.add("hide")
+	}else {
+		document.getElementById("failureNotifyBtn").classList.remove("hide")
+		document.getElementById("successNotifyBtn").classList.remove("hide")
+	}
+}
+
+function acceptedPaymentClick(e, param) {
+	fetchSuccessFailureRes = null;
+
+	var _confirmPayment = function(data) {
+		var _orderData = data;
+		_orderData.pollingUrl = distGatewayUrl + notifyContext;
+		_orderData.secureToken = secureTokenForCustomNotify;
+		_orderData.env = getEnv;
+		_orderData.txnParam = param;
+		jQuery.ajax({
+			type : 'post',
+			url : "/${project.name}/order/success",
+			crossDomain : true,
+			data : {
+				jsonArray : JSON.stringify(_orderData)
+			},
+			success : function(res) {
+				res = JSON.parse(res);
+				if(typeof(res.merchantLinkedFlag) == "undefined") {
+					if (typeof res.pcid !== "undefined") {
+						setCookie("pcid", res.pcid,
+								res.cookieExpiryDays,
+								cookieManagementUrl);
+					}
+				}
+
+				setTimeout(function() {
+					window.location = "/${project.name}/"+ res.html
+				}, 3000);
+			}
+		});
+	};
+
+	var URLSchema  = '';
+	URLSchema = distGatewayUrl + notifyContext + "/" + secureTokenForCustomNotify + "/" + param;
+	jQuery.ajax({
+		url : URLSchema,
+		dataType : "json",
+		crossDomain : true,
+		contentType : "application/json; charset=UTF-8",
+		type : "GET",
+		headers : {
+			"accept" : "application/json; charset=UTF-8"
+		},
+		success : function(data) {
+			console.log("fetchSuccessFailure Res", data);
+			zapppopup._stopTimers();
+			zapppopup._removePopup(true);
+			parent.closeBRNPopup();
+			document.getElementById('notifyWrapper').style.display = "none";
+			// _confirmPayment(data);
+			console.log('success', JSON.stringify(data));
+
+			if (typeof data.errorCode === "undefined") {
+				data.success = true;
+				if (typeof data.guid !== "undefined") {
+					data.pcid = data.pcid;
+				}
+				var response = new zapppopup.response.notify(
+						{
+							success : true
+						});
+				libCallback(response);
+				_confirmPayment(data);
+			}
+		},
+		error : function(data) {
+			console.log('error');
+			zapppopup._stopTimers();	
+			zapppopup._removePopup(true);
+			var response = new zapppopup.response.notify({
+				success : false,
+				data : data
+			});
+			libCallback(response);
+		}
+	});
+}
+
+var redirectionInterval = setInterval(function() {
+	// if(localStorage.getItem('env') === 'sprint' || localStorage.getItem('env') === 'dev') {
+	if(localStorage.getItem('rtpTxnStatus') == 'success'){
+		localStorage.setItem('rtpTxnStatus', '');
+		clearInterval(redirectionInterval);
+		window.location = "${server.url}/${project.name}/success" + "?redirectTo=success";
+	}
+	if(localStorage.getItem('rtpTxnStatus') == 'failure'){
+		localStorage.setItem('rtpTxnStatus', '');
+		clearInterval(redirectionInterval);
+		window.location = "${server.url}/${project.name}/failure" + "?redirectTo=failure";
+	}
+	// }
+}, 3000);
+
