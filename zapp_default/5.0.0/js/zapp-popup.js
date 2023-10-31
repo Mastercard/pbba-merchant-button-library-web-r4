@@ -178,10 +178,21 @@ limitations under the License.
 														},
 														"com.zapp.popup.close" : function(
 																data) {
+															var brnIframe = document.getElementById('brnIframe');
+															if (brnIframe) {
+																document.body.removeChild(brnIframe);
+															}
 															sendEvent(
 																	"pbba.popup.close",
 																	clickedButton.id,
 																	[]);
+														},
+														"com.zapp.more.about.popup.close" : function(
+																data) {
+															var moreAboutIframe = document.getElementById('moreAboutIframe');
+															if (moreAboutIframe) {
+																document.body.removeChild(moreAboutIframe);
+															}
 														},
 														"com.zapp.button.openapp.click" : function(
 																data) {

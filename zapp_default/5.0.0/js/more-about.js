@@ -26,7 +26,16 @@ function closeMoreAboutPopup(event) {
 		return false;
 	}
 	moreAboutContainer.style.display = "none";
-	parent.closeMoreAboutPopup();
+	sendEvent('com.zapp.more.about.popup.close', window.id, []);
+}
+
+function sendEvent(type, id, data) {
+	var postData = {
+		id : window.id,
+		eventType : type,
+		data : data
+	};
+	window.parent.postMessage(JSON.stringify(postData), '*');
 }
 
 function getQueryParams() {
@@ -58,9 +67,9 @@ window.onload = function() {
 		document.getElementById("moreAboutLogoFocus").focus();
 	},100);
 	var cfiLogosArray = [], count=1;
-	parent.readJSONFile(url);
+	readJSONFile(url);
 	setTimeout(function() {
-		cfiLogos = parent.getCfiLogosLong(true);
+		cfiLogos = getCfiLogosLong(true);
 		var length = cfiLogosLength(cfiLogos);
 		if (length > 8) {
 			length = 8;

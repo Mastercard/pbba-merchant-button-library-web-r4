@@ -456,8 +456,20 @@ function showMoreAboutPopup() {
 	document.body.appendChild(moreAboutIframe);
 }
 
+function filteredAppList(list, requestType) {
+	var arr = [];
+	for (index in list) {
+		arr.push(list[index]);
+	}
+	if (requestType == 'RequestToLink' || requestType == 'RequestToLinkAndPay') {
+		arr = arr.filter(item => item.apiVersion >= 4);
+	}
+	return arr;
+}
+
 function showAppListPopup() {
-	if (parent.getAppList().length == 0) {
+	var appList = getAppList(false);
+	if (appList.length == 0 || filteredAppList(appList, requestType).length == 0) {
 		showBrnPop();
 	} else {
 		var appListIframe = document.getElementById('appListIframe');
@@ -486,7 +498,7 @@ function closePopupWindow() {
 	closePopupFlag = false;
 	brnContainer.style.display = "none";
 	sendEvent('com.zapp.popup.close', window.id, []);
-	parent.closeBRNPopup();
+	closeBRNPopup();
 	}
 
 function closePopupFocus(event){
@@ -497,7 +509,7 @@ function closePopupFocus(event){
 	} else if(key == 13) {
 		brnContainer.style.display = "none";
 		sendEvent('com.zapp.popup.close', window.id, []);
-		parent.closeBRNPopup();
+		closeBRNPopup();
 	}
 }
 
@@ -581,13 +593,13 @@ window.onload = function() {
 	cfiCDNUrl = getQueryParams()["cfiCDNUrl"];
 	appManifestUrl = getQueryParams()["appManifestUrl"];
 	requestType = getQueryParams()["requestType"];
-	parent.readAppManifestFile(appManifestUrl);
-	parent.readJSONFile(cfiCDNUrl);
+	readAppManifestFile(appManifestUrl);
+	readJSONFile(cfiCDNUrl);
 	setTimeout(
 			function() {
 				document.getElementById("pbbaLogoFocus").blur();
 				document.getElementById("pbbaLogoFocus").focus();
-				cfiLogos = parent.getCfiLogosLong(true);
+				cfiLogos = getCfiLogosLong(true);
 				var length = cfiLogosLength(cfiLogos);
 				cfiLogoLength = length;
 				if (length > 8) {
@@ -644,8 +656,8 @@ window.addEventListener("orientationchange", function() {
 		document.getElementById('cfiLogos').innerHTML = '';
 		document.getElementById('cfiLogosSmDesktop').innerHTML = '';
 	}
-	parent.readJSONFile(cfiCDNUrl);
-	cfiLogos = parent.getCfiLogosLong(true);
+	readJSONFile(cfiCDNUrl);
+	cfiLogos = getCfiLogosLong(true);
 	var length = cfiLogosLength(cfiLogos);
 	if (length > 8) {
 		length = 8;
@@ -733,3 +745,17 @@ function switchBetweenPopup(popup) {
 		}
 	}
 }
+
+
+window.addEventListener('message', message => {
+    try {
+		data = JSON.parse(message.data);
+		if (data.eventType == "com.zapp.more.about.popup.close") {
+			closeMoreAboutPopup();
+		}
+	} catch (err) {
+		return;
+	}
+	
+
+})

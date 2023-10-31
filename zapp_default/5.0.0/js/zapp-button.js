@@ -150,11 +150,11 @@ function cfiLogosLength(cfiLogos) {
 
 function getCFILogosAndRenderPBBAButton() {
 	
-	parent.readJSONFile(bankUrl);
+	readJSONFile(bankUrl);
 	setTimeout(
 			function() {
 				
-				cfiLogos = parent.getCfiLogosShort(true);
+				cfiLogos = getCfiLogosShort(true);
 				
 				renderPBBAButton();
 			
@@ -165,7 +165,7 @@ function getCFILogosAndRenderPBBAButton() {
 
 function getCfiAppList() {
 	
-	parent.readAppManifestFile(appManifestUrl);
+	readAppManifestFile(appManifestUrl);
 
 }
 

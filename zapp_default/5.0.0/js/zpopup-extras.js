@@ -433,8 +433,6 @@ var logoData;
 			return;
 		}
 		var request = new XMLHttpRequest();
-		request.open("GET", file, true);
-		request.send(null);
 		request.onload = function() {
 			var type = request.getResponseHeader('Content-Type');
 			parent.getPayloadWithSignatureData(file, request.responseText.trim(), true).then(function(response) {
@@ -447,6 +445,10 @@ var logoData;
 			
 			console.log(request.responseText);
 		};
+		setTimeout(function() {
+			request.open("GET", file, true);
+			request.send(null);
+		}, 200);
 	}
 	
 	getAppList = function(shuffled) {

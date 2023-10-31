@@ -405,7 +405,7 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 		}
 	}
 
-	closeMoreAboutPopup = function() {
+	closeMoreAboutPopup2 = function() {
 		var moreAboutIframe = document.getElementById('moreAboutIframe');
 		if (moreAboutIframe) {
 			document.body.removeChild(moreAboutIframe);
@@ -482,11 +482,9 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 			return;
 		}
 		var request = new XMLHttpRequest();
-		request.open("GET", file, true);
-		request.send(null);
 		request.onload = function() {
 			var type = request.getResponseHeader('Content-Type');
-			parent.getPayloadWithSignatureData(file, request.responseText.trim(), true).then(function(response) {
+			getPayloadWithSignatureData(file, request.responseText.trim(), true).then(function(response) {
 				console.log(response);
 				if (response !== false) {
 					zapp.appList = response.apps;
@@ -496,6 +494,10 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 			
 			console.log(request.responseText);
 		};
+		setTimeout(function() {
+			request.open("GET", file, true);
+			request.send(null);
+		}, 200);
 	}
 	
 	getAppList = function(shuffled) {
